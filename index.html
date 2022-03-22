@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html> 
+    <head>
+        <meta charset="utf-8">
+        <title>Map Website</title>
+        <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+
+        <!-- Mapbox -->
+        <link href="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css" rel="stylesheet">
+        <script src="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js" defer></script>
+
+        <!-- Custom Styling -->
+        <link rel="stylesheet" type="text/css" href="style.css">
+
+        <!-- Map Script -->
+        <script src="javascript/mapmain.js" defer></script>
+
+        <!-- Website Script -->
+        <script src="javascript/webmain.js" defer></script>
+    </head>
+
+    <body>
+        <nav id="menu"></nav>
+        <div id="map"></div>
+        <div class='map-overlay' id='features'><h2>Blkgrp_exp</h2><div id='pd'><p>Hover over an area!</p></div></div>
+        <div class='map-overlay' id='legend'></div>
+    </body>
+</html>
