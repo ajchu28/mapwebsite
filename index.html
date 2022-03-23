@@ -18,12 +18,29 @@
 
         <!-- Website Script -->
         <script src="javascript/webmain.js" defer></script>
+
+        <!-- Fomantic UI -->
+        <link rel="stylesheet" type="text/css" href="website_fomantic/semantic/dist/semantic.min.css">
     </head>
 
+    <!-- Map Page -->
     <body>
-        <nav id="menu"></nav>
-        <div id="map"></div>
-        <div class='map-overlay' id='features'><h2>Blkgrp_exp</h2><div id='pd'><p>Hover over an area!</p></div></div>
-        <div class='map-overlay' id='legend'></div>
+        <!-- Navigation Menu -->
+        <div class ="ui inverted menu" id="navmenu">
+            <div class="ui container">
+                <a class="active item">Map</a>
+                <a class="item">Data</a>
+                <a class="item">About</a>
+            </div>
+        </div>
+
+        <!-- Page Contents -->
+        <!-- Map -->
+        <div class="container" id="mapcontainer">
+            <nav id="menu"></nav>
+            <div id="map"></div>
+            <div class='map-overlay' id='features'><h2>Blkgrp_exp</h2><div id='pd'><p>Hover over an area!</p></div></div>
+            <div class='map-overlay' id='legend'></div>
+        </div>
     </body>
 </html>
