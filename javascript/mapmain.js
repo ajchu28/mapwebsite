@@ -103,15 +103,49 @@ map.on('idle', () => {
                     'visibility',
                     'visible'
                 );
-
+                for (const layer of toggleableLayerIds) {
+                    if (map.getLayoutProperty(layer, 'visibility') === 'visible') {
+                        map.moveLayer(layer, clickedLayer);
+                    }
+                }
 
                 // change active layer to cursor boundaries
                 map.on('mousemove', (event) => {
                 const boundaries = map.queryRenderedFeatures(event.point, {
                 layers: [clickedLayer]
                 });
+
+                // console.log("clicked layer is %s", clickedLayer);
+
+                var property_type = 'none';
+                if (clickedLayer === 'wei_data') {
+                    property_type = 'weighted_interaction_exposure';
+                } else if (clickedLayer === 'ce_data') {
+                    property_type = 'cell_exp';
+                } else if (clickedLayer === "bge_data") {
+                    property_type = 'blkgrp_exp';
+                } else {
+                    property_type = 'none';
+                }
+
+                // switch(String(clickedLayer)) {
+                //     case 'wei_data':
+                //         console.log("clicked layer is %s", clickedLayer);
+                //         property_type = 'weighted_interaction_exposure';
+                //     case 'ce_data':
+                //         console.log("clicked layer is %s", clickedLayer);
+                //         property_type = 'cell_exp';
+                //     case 'bge_data':
+                //         console.log("clicked layer is %s", clickedLayer);
+                //         property_type = 'blkgrp_exp';
+                //     default:
+                //         break;
+                // }
+
+                // console.log("property type is %s", property_type);
+
                 document.getElementById('pd').innerHTML = boundaries.length
-                ? `<p><strong><em>${boundaries[0].properties.cell_exp_hover}</strong> units</em></p>`
+                ? `<p><strong><em>${boundaries[0].properties.property_type}</strong> units</em></p>`
                 : `<p>Hover over an area!</p>`;
                 });
             }
