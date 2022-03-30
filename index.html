@@ -25,6 +25,7 @@
 
     <!-- Map Page -->
     <body>
+    
         <!-- Navigation Menu -->
         <div class ="ui inverted menu" id="navmenu">
             <div class="ui container">
@@ -33,14 +34,29 @@
                 <a class="item" href="webpages/about.html">About</a>
             </div>
         </div>
-
+        
         <!-- Page Contents -->
+        <!-- Overlay Info -->
+
         <!-- Map -->
         <div class="container" id="mapcontainer">
-            <nav id="menu"></nav>
+            <!-- <nav id="menu"></nav> -->
             <div id="map"></div>
-            <!-- <div class='map-overlay' id='features'><h2>Blkgrp_exp</h2><div id='pd'><p>Hover over an area!</p></div></div> -->
-            <!-- <div class='map-overlay' id='legend'></div> -->
+            <!-- <div class='map-overlay' id='features'><h2>Blkgrp_exp</h2><div id='pd'><p>Hover over an area!</p></div></div>
+            <div class='map-overlay' id='legend'></div> -->
+        </div>
+
+        <div class="map-text" id="background">
+            <div class="ui grid">
+                <div class="row">
+                    <div class="left floated four wide column">
+                        <div class="map-text-rectangle">Story</div>
+                    </div>
+                    <div class="right floated four wide column">
+                        <div class="map-text-rectangle" id="info">Info</div>
+                    </div>
+                </div>
+            </div>    
         </div>
     </body>
 </html>
