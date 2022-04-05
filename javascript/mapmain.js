@@ -103,11 +103,28 @@ map.on('idle', () => {
                     'visibility',
                     'visible'
                 );
+                console.log("clicked layer is %s", clickedLayer);
                 for (const layer of toggleableLayerIds) {
-                    if (map.getLayoutProperty(layer, 'visibility') === 'visible') {
-                        map.moveLayer(layer, clickedLayer);
+                    if (layer != clickedLayer) { 
+                        console.log("iterate layer is %s", layer);
+                        const element = document.getElementById(layer);
+                        element.className = '';
+                        // this.className = 'active';
+                        map.setLayoutProperty(
+                            layer,
+                            'visibility',
+                            'none'
+                        )
                     }
                 }
+
+                // // Turn off layers that aren't selected
+                // // Add in communities/land use layers
+                // for (const layer of toggleableLayerIds) {
+                //     if (map.getLayoutProperty(layer, 'visibility') === 'visible') {
+                //         map.moveLayer(layer, clickedLayer);
+                //     }
+                // }
 
                 // change active layer to cursor boundaries
                 map.on('mousemove', (event) => {
