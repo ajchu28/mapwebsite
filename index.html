@@ -40,7 +40,12 @@
         <!-- Map -->
         <div class="container" id="mapcontainer">
             <div id="map"></div>
-            <!-- <div class='map-overlay' id='features'><h2>Blkgrp_exp</h2><div id='pd'><p>Hover over an area!</p></div></div> --> -->
+            <div class='map-overlay' id='features'>
+                <h2>Layer Data</h2>
+                <div id='pd'>
+                    <p>Hover over an area!</p>
+                </div>
+            </div> -->
             <!-- <div class='map-overlay' id='legend'></div> -->
         </div>
 
@@ -54,8 +59,53 @@
             </div>
             <div class="map-text-rectangle" id="info">
                 <div class="ui medium header">Info</div>
-                <!-- Toggle -->
-                <nav id="menu"></nav>
+                
+                <!-- Toggle
+                <div class="selection-wrapper">
+                    Dataset Dropdown
+                    <select class="ui medium selection dropdown" id="dataset_dropdown">
+                        <option value=""></option>
+                        <option value="0">Weighted Interaction Exposure</option>
+                        <option value="1">Cell Exposure</option>
+                        <option value="2">Block Group Exposure</option>
+                    </select>
+                </div> -->
+                
+                <!-- City -->
+                <div class="selection-wrapper">
+                    City Selection
+                    <select class="ui medium selection dropdown">
+                        <option value=""></option>
+                        <option value="0">Chicago</option>
+                        <option value="1">New York</option>
+                        <option value="2">San Francisco</option>
+                    </select>
+                </div>
+                
+
+                <div class="ui form">
+                    <div class="grouped fields">
+                        <label>Exposure Datasets</label>
+                        <div class="field">
+                            <div class="ui radio checkbox">
+                                <input type="radio" name="frequency">
+                                <label>Weighted Interaction Exposure</label>
+                            </div>
+                            <div class="ui radio checkbox">
+                                <input type="radio" name="frequency">
+                                <label>Cell Exposure</label>
+                            </div>
+                            <div class="ui radio checkbox">
+                                <input type="radio" name="frequency">
+                                <label>Block Group Exposure</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Information Box -->
+                <div class="info_box">
+                </div>
 
                 <!-- Histogram -->
                 <div class="legend-overlay hlegend" id="histogram_legend">
@@ -91,6 +141,8 @@
                     <label style="text-align: center;">1.00</label>
                     <label style="text-align: right;">1.12</label>  
                 </div>
+
+                <nav id="menu"></nav>
             </div>
         </div>
 

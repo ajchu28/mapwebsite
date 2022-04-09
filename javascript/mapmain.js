@@ -51,7 +51,7 @@ map.on('load', () => {
         value.innerHTML = `${layer}`;
         item.appendChild(key);
         item.appendChild(value);
-        legend.appendChild(item);
+        // legend.appendChild(item);
     });
 
     map.getCanvas().style.cursor = 'default';
@@ -103,10 +103,10 @@ map.on('idle', () => {
                     'visibility',
                     'visible'
                 );
-                console.log("clicked layer is %s", clickedLayer);
+
                 for (const layer of toggleableLayerIds) {
                     if (layer != clickedLayer) { 
-                        console.log("iterate layer is %s", layer);
+                        // console.log("iterate layer is %s", layer);
                         const element = document.getElementById(layer);
                         element.className = '';
                         // this.className = 'active';
@@ -134,16 +134,16 @@ map.on('idle', () => {
 
                 // console.log("clicked layer is %s", clickedLayer);
 
-                var property_type = 'none';
-                if (clickedLayer === 'wei_data') {
-                    property_type = 'weighted_interaction_exposure';
-                } else if (clickedLayer === 'ce_data') {
-                    property_type = 'cell_exp';
-                } else if (clickedLayer === "bge_data") {
-                    property_type = 'blkgrp_exp';
-                } else {
-                    property_type = 'none';
-                }
+                // var property_type = 'none';
+                // if (clickedLayer === 'wei_data') {
+                //     property_type = 'weighted_interaction_exposure';
+                // } else if (clickedLayer === 'ce_data') {
+                //     property_type = 'cell_exp';
+                // } else if (clickedLayer === "bge_data") {
+                //     property_type = 'blkgrp_exp';
+                // } else {
+                //     property_type = 'none';
+                // }
 
                 // switch(String(clickedLayer)) {
                 //     case 'wei_data':
@@ -162,7 +162,7 @@ map.on('idle', () => {
                 // console.log("property type is %s", property_type);
 
                 document.getElementById('pd').innerHTML = boundaries.length
-                ? `<p><strong><em>${boundaries[0].properties.property_type}</strong> units</em></p>`
+                ? `<p><strong><em>${boundaries[0].properties.clickedLayer}</strong> units</em></p>`
                 : `<p>Hover over an area!</p>`;
                 });
             }
