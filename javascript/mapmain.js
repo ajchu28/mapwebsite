@@ -51,7 +51,7 @@ map.on('load', () => {
         value.innerHTML = `${layer}`;
         item.appendChild(key);
         item.appendChild(value);
-        // legend.appendChild(item);
+        legend.appendChild(item);
     });
 
     map.getCanvas().style.cursor = 'default';
@@ -66,6 +66,12 @@ map.on('idle', () => {
 
     // Enumerate ids of the layers.
     const toggleableLayerIds = ['wei_data', 'ce_data', 'bge_data'];
+
+    const property_types = {
+        'wei_data': 'wei_data',
+        'ce_data': 'cell_exp',
+        'bge_data': 'blkgrp_exp'
+    };
 
     // Set up the corresponding toggle button for each layer.
     for (const id of toggleableLayerIds) {
@@ -162,7 +168,7 @@ map.on('idle', () => {
                 // console.log("property type is %s", property_type);
 
                 document.getElementById('pd').innerHTML = boundaries.length
-                ? `<p><strong><em>${boundaries[0].properties.clickedLayer}</strong> units</em></p>`
+                ? `<p><strong><em>${boundaries[0].properties[property_types[clickedLayer]]}</strong> units</em></p>`
                 : `<p>Hover over an area!</p>`;
                 });
             }
