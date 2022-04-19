@@ -7,6 +7,12 @@ const map = new mapboxgl.Map({
     center: [-87.623177, 41.881832]
 });
 
+// Adding Sources
+// map.addSource('community_districts', {
+//     type: 'geojson',
+//     data: 'mapbox://iamwfx.results1_2'
+// })
+
 // Creates links for the toggle menu
 function layer_toggle(id) {
     // Create a link.
@@ -87,43 +93,6 @@ map.on('load', () => {
     map.setLayoutProperty('ce_data', 'visibility', 'none');
     map.setLayoutProperty('wei_data', 'visibility', 'none');
 
-<<<<<<< HEAD
-=======
-    // build legend
-    const layers = [
-    '0-0.14',
-    '0.14-0.27',
-    '0.27-0.41',
-    '0.41-0.54',
-    '0.54-0.68',
-    '0.68+'
-    ];
-    const colors = [
-    '#f2f9ea',
-    'hsl(156, 35%, 74%)',
-    'hsl(200, 46%, 58%)',
-    'hsl(209, 50%, 46%)',
-    'hsl(221, 49%, 35%)',
-    'hsl(222, 62%, 25%)'
-    ];
-
-    // create a legend
-    const legend = document.getElementById('legend');
-    layers.forEach((layer, i) => {
-        const color = colors[i];
-        const item = document.createElement('div');
-        const key = document.createElement('span');
-        key.className = 'legend-key';
-        key.style.backgroundColor = color;
-
-        const value = document.createElement('span');
-        value.innerHTML = `${layer}`;
-        item.appendChild(key);
-        item.appendChild(value);
-        legend.appendChild(item);
-    });
-
->>>>>>> 03c8118f42058236dd3bc9ed4f78505409c1c61c
     map.getCanvas().style.cursor = 'default';
 });
 
@@ -138,11 +107,7 @@ map.on('idle', () => {
     const toggleableLayerIds = ['wei_data', 'ce_data', 'bge_data'];
 
     const property_types = {
-<<<<<<< HEAD
         'wei_data': 'weighted_interaction_exposure',
-=======
-        'wei_data': 'wei_data',
->>>>>>> 03c8118f42058236dd3bc9ed4f78505409c1c61c
         'ce_data': 'cell_exp',
         'bge_data': 'blkgrp_exp'
     };
@@ -174,80 +139,10 @@ map.on('idle', () => {
             } else {
                 // change visible layer
                 this.className = 'active';
-<<<<<<< HEAD
                 toggle_vis(clickedLayer, toggleableLayerIds);
             
                 // adjust cursor boundaries
                 // adjust_active_layer(clickedLayer, property_types);
-=======
-                map.setLayoutProperty(
-                    clickedLayer,
-                    'visibility',
-                    'visible'
-                );
-
-                for (const layer of toggleableLayerIds) {
-                    if (layer != clickedLayer) { 
-                        // console.log("iterate layer is %s", layer);
-                        const element = document.getElementById(layer);
-                        element.className = '';
-                        // this.className = 'active';
-                        map.setLayoutProperty(
-                            layer,
-                            'visibility',
-                            'none'
-                        )
-                    }
-                }
-
-                // // Turn off layers that aren't selected
-                // // Add in communities/land use layers
-                // for (const layer of toggleableLayerIds) {
-                //     if (map.getLayoutProperty(layer, 'visibility') === 'visible') {
-                //         map.moveLayer(layer, clickedLayer);
-                //     }
-                // }
-
-                // change active layer to cursor boundaries
-                map.on('mousemove', (event) => {
-                const boundaries = map.queryRenderedFeatures(event.point, {
-                layers: [clickedLayer]
-                });
-
-                // console.log("clicked layer is %s", clickedLayer);
-
-                // var property_type = 'none';
-                // if (clickedLayer === 'wei_data') {
-                //     property_type = 'weighted_interaction_exposure';
-                // } else if (clickedLayer === 'ce_data') {
-                //     property_type = 'cell_exp';
-                // } else if (clickedLayer === "bge_data") {
-                //     property_type = 'blkgrp_exp';
-                // } else {
-                //     property_type = 'none';
-                // }
-
-                // switch(String(clickedLayer)) {
-                //     case 'wei_data':
-                //         console.log("clicked layer is %s", clickedLayer);
-                //         property_type = 'weighted_interaction_exposure';
-                //     case 'ce_data':
-                //         console.log("clicked layer is %s", clickedLayer);
-                //         property_type = 'cell_exp';
-                //     case 'bge_data':
-                //         console.log("clicked layer is %s", clickedLayer);
-                //         property_type = 'blkgrp_exp';
-                //     default:
-                //         break;
-                // }
-
-                // console.log("property type is %s", property_type);
-
-                document.getElementById('pd').innerHTML = boundaries.length
-                ? `<p><strong><em>${boundaries[0].properties[property_types[clickedLayer]]}</strong> units</em></p>`
-                : `<p>Hover over an area!</p>`;
-                });
->>>>>>> 03c8118f42058236dd3bc9ed4f78505409c1c61c
             }
         };
     }
