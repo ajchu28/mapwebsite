@@ -12,24 +12,22 @@ body { margin: 0; padding: 0; }
     background: #fff;
     position: absolute;
     z-index: 1;
-    top: 60px;
-    right: 88px;
-    border-radius: 3px;
-    width: 120px;
+    top: 120px;
+    right: 250px;
+    border-radius: 5px;
+    width: 20px;
     border: 1px solid rgba(0, 0, 0, 0.4);
     font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
 }
 
 #menu a {
-    font-size: 13px;
+    font-size: 0px;
     color: #404040;
     display: block;
     margin: 0;
-    padding: 0;
-    padding: 10px;
     text-decoration: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.25);
-    text-align: center;
+    text-align: right;
 }
 
 #menu a:last-child {
@@ -42,12 +40,20 @@ body { margin: 0; padding: 0; }
 }
 
 #menu a.active {
+    border-radius: 10px;
     background-color: #3887be;
-    color: #ffffff;
+    /* color: #3887be; */
 }
 
 #menu a.active:hover {
     background: #3074a4;
+}
+
+.toggle_text {
+    margin-top: 18px;
+    margin-left: 50px;
+    line-height: 22px;
+    text-align: left;
 }
 
 /* Style for Hover Bar */
@@ -83,14 +89,6 @@ margin: 10px;
     border-radius: 10px;
     width: 200px;
     font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
-/* position: absolute;
-bottom: 0;
-right: 0;
-background: #fff;
-margin-right: 10px;
-font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
-overflow: auto;
-border-radius: 3px; */
 }
 
 #features {
@@ -139,7 +137,7 @@ margin-right: 5px;
     opacity: 0.95;
     top: 60px;
     right: 30px;
-    height: 500px;
+    height: 510px;
 }
 
 #story {

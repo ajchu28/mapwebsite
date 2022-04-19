@@ -21,6 +21,14 @@
 
         <!-- Fomantic UI -->
         <link rel="stylesheet" type="text/css" href="website_fomantic/semantic/dist/semantic.min.css">
+
+        <!-- JQuery -->
+        <script src="javascript/jquery.js"></script>
+
+        <!-- Data Tables -->
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+        <link rel="stylesheet" type="text/css" href="datatables.css">
     </head>
 
     <!-- Map Page -->
@@ -40,7 +48,7 @@
         <!-- Map -->
         <div class="container" id="mapcontainer">
             <div id="map"></div>
-            <div class='map-overlay' id='features'>
+            <!-- <div class='map-overlay' id='features'>
                 <h2>Layer Data</h2>
                 <div id='pd'>
                     <p>Hover over an area!</p>
@@ -83,32 +91,73 @@
                 </div>
                 
 
-                <div class="ui form">
+                <!-- <div class="ui form">
                     <div class="grouped fields">
                         <label>Exposure Datasets</label>
                         <div class="field">
                             <div class="ui radio checkbox">
-                                <input type="radio" name="frequency">
+                                <input type="radio" name="frequency" tabindex="0" class="hidden">
                                 <label>Weighted Interaction Exposure</label>
                             </div>
-                            <div class="ui radio checkbox">
+                            <div class="ui radio checkbox" tabindex="0" class="hidden">
                                 <input type="radio" name="frequency">
                                 <label>Cell Exposure</label>
                             </div>
-                            <div class="ui radio checkbox">
+                            <div class="ui radio checkbox" tabindex="0" class="hidden">
                                 <input type="radio" name="frequency">
                                 <label>Block Group Exposure</label>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- Information Box -->
                 <div class="info_box">
+
+                    <!-- Toggle Menu -->
+                    <nav id="menu"></nav>
+                    <div class = "toggle_text">
+                        <div class="ttext">Weighted Exposure Interaction</div>
+                        <div class="ttext">Cell Exposure</div>
+                        <div class="ttext">Block Group Exposure</div>
+                    </div>
+
+                    <!-- Data Table -->
+                    <div class="ui compact segment" style="margin: 11px">
+                        <table id="data_table" class="display">
+                            <thead>
+                                <tr>
+                                    <th>Neighborhood</th>
+                                    <th>Cool Data</th>
+                                    <!-- <th>WEI</th>
+                                    <th>CE</th>
+                                    <th>Blk_Grp</th> -->
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td id="Lakeview">Lakeview</td>
+                                    <td>Row 1 Data 2</td>
+                                </tr>
+                                <tr>
+                                    <td id="Hyde Park">Hyde Park</td>
+                                    <td>Row 1 Data 2</td>
+                                </tr>
+                                <tr>
+                                    <td id="Avondale">Avondale</td>
+                                    <td>Row 1 Data 2</td>
+                                </tr>
+                                <tr>
+                                    <td id="Wicker Park">Wicker Park</td>
+                                    <td>Row 1 Data 2</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
 
                 <!-- Histogram -->
-                <div class="legend-overlay hlegend" id="histogram_legend">
+                <!-- <div class="legend-overlay hlegend" id="histogram_legend">
                     Interaction Index <br>
                     <div id="histogram-placeholder">
                         <svg width="190" height="112">
@@ -135,14 +184,12 @@
                         </svg>
                     </div>
                     <span></span>
-                    <label style="text-align: left;">0.67</label>
+                    <label style="text-align: left;">0.14</label>
                     <label>0.78</label>
                     <label>0.89</label>
                     <label style="text-align: center;">1.00</label>
                     <label style="text-align: right;">1.12</label>  
-                </div>
-
-                <nav id="menu"></nav>
+                </div> -->
             </div>
         </div>
 
