@@ -10,7 +10,7 @@ body { margin: 0; padding: 0; }
 /* Style for Toggle Menu */
 #menu {
     background: #fff;
-    position: absolute;
+    /* position: absolute; */
     z-index: 1;
     top: 120px;
     right: 250px;
@@ -51,7 +51,7 @@ body { margin: 0; padding: 0; }
 
 .toggle_text {
     margin-top: 18px;
-    margin-left: 50px;
+    /* margin-left: 50px; */
     line-height: 22px;
     text-align: left;
 }
@@ -128,16 +128,16 @@ margin-right: 5px;
     height: 400px;
     width: 300px;
     box-sizing: border-box;
-    padding: 10px;
+    padding: 40px;
 }
 
 
 #info {
-    position: absolute;
+    /* position: absolute; */
     opacity: 0.95;
-    top: 60px;
-    right: 30px;
-    height: 510px;
+    /* top: 60px; */
+    /* right: 30px; */
+    /* height: 510px; */
 }
 
 #story {
@@ -147,11 +147,12 @@ margin-right: 5px;
     left: 30px;
 }
 
-
-#story-text {
+.story-text {
     font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
-    font-size: 15px;
+    font-size: 16px;
     line-height: 18px;
+    text-align: justify;
+    /* padding: 20px; */
 }
 
 
@@ -253,8 +254,8 @@ histogram-legend th:first-child {
     width: 30%;
     font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
     color: white;
-    text-shadow: -0.5px -0.5px white, 
-        -0.5px 0.5px white, 
+    text-shadow: -0.5px -0.5px white,
+        -0.5px 0.5px white,
         0.5px -0.5px white,
         0.5px 0.5px white;
 }

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html> 
+<html>
     <head>
         <meta charset="utf-8">
         <title>Map</title>
@@ -33,7 +33,7 @@
 
     <!-- Map Page -->
     <body>
-    
+
         <!-- Navigation Menu -->
         <div class ="ui inverted menu" id="navmenu">
             <div class="ui container">
@@ -42,7 +42,7 @@
                 <a class="item" href="webpages/about.html">About</a>
             </div>
         </div>
-        
+
         <!-- Page Contents -->
 
         <!-- Map -->
@@ -54,20 +54,42 @@
                     <p>Hover over an area!</p>
                 </div>
             </div> -->
-            <div class='map-overlay' id='legend'></div>
+            <!-- <div class='map-overlay' id='legend'></div> -->
         </div>
 
-        
+
         <div class="map-text">
-            <div class="map-text-rectangle" id="story">
-                <div class="ui medium header">Story</div>
-                <div id="story-text">
-                    This is text about background, etc etc.
-                </div>
+
+          <div class="ui relaxed grid">
+            <div class="row">
             </div>
-            <div class="map-text-rectangle" id="info">
-                <div class="ui medium header">Info</div>
-                
+            <div class="row">
+            </div>
+            <div class="one wide column"></div>
+            <div class="five wide column">
+              <div class="ui segment">
+              <!-- <div class="map-text-rectangle" id="story"> -->
+                  <div class="ui large header">A New Picture of Segregation</div>
+                  <div class="story-text">
+                    How do we understand racial segregation? Traditionally, we think about racial segregation in terms of neighborhoods - where people live.
+                  </div>
+                </br>
+                  <div class="story-text">
+                    A New Picture of Segregation describes a different way of thinking about segregation.
+                  </div>
+                  </br>
+                  <div class="story-text">
+                    We account for the other spaces and opportunities that make up our daily social exposures.
+                  </div>
+              </div>
+              <!-- </div> -->
+            </div>
+            <div class="five wide column"></div>
+            <div class="four wide column" id="info">
+              <div class="ui segment">
+            <!-- <div class="map-text-rectangle" id="info"> -->
+                <div class="ui large header">Info</div>
+
                 <!-- Toggle
                 <div class="selection-wrapper">
                     Dataset Dropdown
@@ -78,7 +100,7 @@
                         <option value="2">Block Group Exposure</option>
                     </select>
                 </div> -->
-                
+
                 <!-- City -->
                 <div class="selection-wrapper">
                     City Selection
@@ -89,7 +111,7 @@
                         <option value="2">San Francisco</option>
                     </select>
                 </div>
-                
+
 
                 <!-- <div class="ui form">
                     <div class="grouped fields">
@@ -115,13 +137,18 @@
                 <div class="info_box">
 
                     <!-- Toggle Menu -->
-                    <nav id="menu"></nav>
-                    <div class = "toggle_text">
-                        <div class="ttext">Weighted Exposure Interaction</div>
-                        <div class="ttext">Cell Exposure</div>
-                        <div class="ttext">Block Group Exposure</div>
+                    <div class="ui  grid">
+                      <div class="four wide column">
+                        <nav id="menu"></nav>
+                      </div>
+                      <div class="twelve wide column">
+                        <div class = "toggle_text">
+                            <div class="ttext">Weighted Exposure Interaction</div>
+                            <div class="ttext">Cell Exposure</div>
+                            <div class="ttext">Block Group Exposure</div>
+                        </div>
+                      </div>
                     </div>
-
                     <!-- Data Table -->
                     <div class="ui compact segment" style="margin: 11px">
                         <table id="data_table" class="display">
@@ -188,8 +215,11 @@
                     <label>0.78</label>
                     <label>0.89</label>
                     <label style="text-align: center;">1.00</label>
-                    <label style="text-align: right;">1.12</label>  
+                    <label style="text-align: right;">1.12</label>
                 </div> -->
+              </div>
+            </div>
+
             </div>
         </div>
 
