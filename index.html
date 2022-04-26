@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html> 
+<html>
     <head>
         <meta charset="utf-8">
         <title>Map</title>
@@ -33,16 +33,16 @@
 
     <!-- Map Page -->
     <body>
-    
+
         <!-- Navigation Menu -->
-        <div class ="ui inverted menu" id="navmenu">
+        <div class ="ui  inverted menu" id="navmenu">
             <div class="ui container">
                 <a class="active item">Map</a>
                 <a class="item" href="webpages/data.html">Data</a>
                 <a class="item" href="webpages/about.html">About</a>
             </div>
         </div>
-        
+
         <!-- Page Contents -->
 
         <!-- Map -->
@@ -54,20 +54,42 @@
                     <p>Hover over an area!</p>
                 </div>
             </div> -->
-            <div class='map-overlay' id='legend'></div>
+            <!-- <div class='map-overlay' id='legend'></div> -->
         </div>
 
-        
+
         <div class="map-text">
-            <div class="map-text-rectangle" id="story">
-                <div class="ui medium header">Story</div>
-                <div id="story-text">
-                    This is text about background, etc etc.
-                </div>
+
+          <div class="ui relaxed grid">
+            <div class="row">
             </div>
-            <div class="map-text-rectangle" id="info">
-                <div class="ui medium header">Info</div>
-                
+            <div class="row">
+            </div>
+            <div class="one wide column"></div>
+            <div class="five wide column">
+              <div class="ui inverted segment">
+              <!-- <div class="map-text-rectangle" id="story"> -->
+                  <div class="ui large header">A New Picture of Segregation</div>
+                  <div class="story-text">
+                    How do we understand racial segregation? Traditionally, we think about racial segregation in terms of neighborhoods - where people live.
+                  </div>
+                </br>
+                  <div class="story-text">
+                    A New Picture of Segregation describes a different way of thinking about segregation.
+                  </div>
+                  </br>
+                  <div class="story-text">
+                    We account for the other spaces and opportunities that make up our daily social exposures.
+                  </div>
+              </div>
+              <!-- </div> -->
+            </div>
+            <div class="five wide column"></div>
+            <div class="four wide column" id="info">
+              <div class="ui inverted segment">
+            <!-- <div class="map-text-rectangle" id="info"> -->
+                <div class="ui large header">Info</div>
+
                 <!-- Toggle
                 <div class="selection-wrapper">
                     Dataset Dropdown
@@ -78,18 +100,18 @@
                         <option value="2">Block Group Exposure</option>
                     </select>
                 </div> -->
-                
+
                 <!-- City -->
-                <div class="selection-wrapper">
+                <!-- <div class="selection-wrapper">
                     City Selection
-                    <select class="ui medium selection dropdown">
-                        <option value=""></option>
-                        <option value="0">Chicago</option>
+                    <select class="ui  selection dropdown"> -->
+                        <!-- <option value=""></option> -->
+                        <!-- <option value="0">Chicago</option>
                         <option value="1">New York</option>
                         <option value="2">San Francisco</option>
                     </select>
-                </div>
-                
+                </div> -->
+
 
                 <!-- <div class="ui form">
                     <div class="grouped fields">
@@ -112,26 +134,54 @@
                 </div> -->
 
                 <!-- Information Box -->
+
                 <div class="info_box">
+                  <div class="ui form">
+                    <div class="grouped fields">
+                      <div class="field">
+                        <div class="ui inverted radio checkbox">
+                          <input type="radio" name="example2" checked="Block Group Exposure">
+                          <label>Residential Exposure</label>
+                        </div>
+                      </div>
+                      <div class="field">
+                        <div class="ui inverted radio checkbox">
+                          <input type="radio" name="Cell Exposure">
+                          <label>Experienced Exposure</label>
+                        </div>
+                      </div>
+                      <div class="field">
+                        <div class="ui inverted radio checkbox">
+                          <input type="radio" name="Weighted Exposure Interaction">
+                          <label>Interaction Exposure</label>
+                        </div>
+                      </div>
 
-                    <!-- Toggle Menu -->
-                    <nav id="menu"></nav>
-                    <div class = "toggle_text">
-                        <div class="ttext">Weighted Exposure Interaction</div>
-                        <div class="ttext">Cell Exposure</div>
-                        <div class="ttext">Block Group Exposure</div>
                     </div>
-
+                  </div>
+                    <!-- Toggle Menu -->
+                    <!-- <div class="ui  grid">
+                      <div class="four wide column">
+                        <nav id="menu"></nav>
+                      </div>
+                      <div class="twelve wide column">
+                        <div class = "toggle_text">
+                            <div class="ttext">Weighted Exposure Interaction</div>
+                            <div class="ttext">Cell Exposure</div>
+                            <div class="ttext">Block Group Exposure</div>
+                        </div>
+                      </div>
+                    </div> -->
                     <!-- Data Table -->
-                    <div class="ui compact segment" style="margin: 11px">
+                    <!-- <div class="ui compact segment" style="margin: 11px">
                         <table id="data_table" class="display">
                             <thead>
                                 <tr>
                                     <th>Neighborhood</th>
                                     <th>Cool Data</th>
-                                    <!-- <th>WEI</th>
+                                    <th>WEI</th>
                                     <th>CE</th>
-                                    <th>Blk_Grp</th> -->
+                                    <th>Blk_Grp</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -153,7 +203,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                    </div>
+                      </div> -->
                 </div>
 
                 <!-- Histogram -->
@@ -188,8 +238,11 @@
                     <label>0.78</label>
                     <label>0.89</label>
                     <label style="text-align: center;">1.00</label>
-                    <label style="text-align: right;">1.12</label>  
+                    <label style="text-align: right;">1.12</label>
                 </div> -->
+              </div>
+            </div>
+
             </div>
         </div>
 
