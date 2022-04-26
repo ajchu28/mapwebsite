@@ -51,7 +51,7 @@ function toggle_vis(clickedLayer, layers) {
     );
 
     for (const layer of layers) {
-        if (layer != clickedLayer) { 
+        if (layer != clickedLayer) {
             const element = document.getElementById(layer);
             element.className = '';
             map.setLayoutProperty(
@@ -87,7 +87,7 @@ function toggle_vis(clickedLayer, layers) {
 
 // Wait until the map has finished loading.
 map.on('load', () => {
-    
+
     // Load layers of data
     map.setLayoutProperty('bge_data', 'visibility', 'none')
     map.setLayoutProperty('ce_data', 'visibility', 'none');
@@ -140,7 +140,7 @@ map.on('idle', () => {
                 // change visible layer
                 this.className = 'active';
                 toggle_vis(clickedLayer, toggleableLayerIds);
-            
+
                 // adjust cursor boundaries
                 // adjust_active_layer(clickedLayer, property_types);
             }
