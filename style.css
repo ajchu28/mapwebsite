@@ -154,7 +154,11 @@ margin-right: 5px;
     text-align: justify;
     /* padding: 20px; */
 }
-
+.about-text{
+    padding-left: 30px;
+    padding-right: 200px;
+    padding-top: 100px;
+}
 
 .legend-overlay {
     position: absolute;
