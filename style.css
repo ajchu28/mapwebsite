@@ -278,3 +278,50 @@ div.hlegend {
     width: 212px;
     text-align: center;
 }
+
+/* Story */
+
+#storymode-controls {
+position: absolute;
+bottom: 10px;
+left: 50%;
+transform: translateX(-50%);
+}
+
+#storymode-controls-numbers {
+display: inline-block;
+text-align: center;
+width: 60px;
+}
+
+#story-back {
+visibility: hidden;
+}
+
+i {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    cursor: pointer;
+}
+
+.right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+
+.left {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
