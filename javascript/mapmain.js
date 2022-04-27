@@ -35,6 +35,23 @@ function adjust_active_layer(clickedLayer, property_types) {
         });
 }
 
+// get the visibility of the given layer
+function get_vis(clickedLayer, disappearing_layers) {
+    if (disappearing_layers.includes(clickedLayer)) {
+        visibility = map.getLayoutProperty(
+            layer_mapping[clickedLayer][0],
+            'visibility'
+        );
+    } else {
+        visibility = map.getLayoutProperty(
+            clickedLayer,
+            'visibility'
+        );
+    }
+
+    return visibility;
+}
+
 // Adjusts visibility of layers when a link is clicked
 function toggle_vis(clickedLayer, layers) {
 
@@ -57,478 +74,15 @@ function toggle_vis(clickedLayer, layers) {
     }
 }
 
-// Adding Sources
-function load_layers() {
+// Checks to see if the layers in the array were properly loaded on the map
+function layers_exist(layer_list) {
+    for (layer in layer_list) {
+        if (!map.getLayer(layer)) {
+            return false;
+        }
+    }
 
-    // Find the placeholder layer
-    let placeholder = 'placeholder';
-
-
-    // const layers = map.getStyle().layers;
-    
-    // for (const layer of layers) {
-    //     if (layer.id === 'placeholder') {
-    //         placeholder = layer.id;
-    //         break;
-    //     }
-    // }
-
-
-    // Community Districs
-    // map.addLayer({
-    //     id:'comm_district',
-    //     type:'line',
-    //     source:{
-    //         'type':'vector',
-    //         'url':'mapbox://iamwfx.7ykn4fj2'
-    //     },
-    //     'source-layer': 'chicago-community-areas-1yb9r7',
-    // })
-
-    // Results
-    // blkgrp_exp
-    map.addLayer({
-        id:'blkgrp_exp_results_1',
-        type:'fill',
-        source:{
-            'type':'vector',
-            'url':'mapbox://iamwfx.results1_0'
-        },
-        'source-layer': 'data',
-        'paint': {
-            'fill-color': [
-                "step",
-                ["get", "blkgrp_exp"],
-                "#fcfdbf",
-                0.14,
-                "#fe9f6d",
-                0.27,
-                "#de4968",
-                0.41,
-                "#8c2981",
-                0.54,
-                "#3b0f70",
-                0.68,
-                "#000004"
-              ]
-        },
-        'layout': {
-            'visibility': 'none',
-        },
-        placeholder
-    })
-    map.addLayer({
-        id:'blkgrp_exp_results_2',
-        type:'fill',
-        source:{
-            'type':'vector',
-            'url':'mapbox://iamwfx.results1_1_n'
-        },
-        'source-layer': 'data',
-        'paint': {
-            'fill-color': [
-                "step",
-                ["get", "blkgrp_exp"],
-                "#fcfdbf",
-                0.14,
-                "#fe9f6d",
-                0.27,
-                "#de4968",
-                0.41,
-                "#8c2981",
-                0.54,
-                "#3b0f70",
-                0.68,
-                "#000004"
-              ]
-        },
-        'layout': {
-            'visibility': 'none',
-        },
-        placeholder
-    })
-    map.addLayer({
-        id:'blkgrp_exp_results_3',
-        type:'fill',
-        source:{
-            'type':'vector',
-            'url':'mapbox://iamwfx.results1_2'
-        },
-        'source-layer': 'data',
-        'paint': {
-            'fill-color': [
-                "step",
-                ["get", "blkgrp_exp"],
-                "#fcfdbf",
-                0.14,
-                "#fe9f6d",
-                0.27,
-                "#de4968",
-                0.41,
-                "#8c2981",
-                0.54,
-                "#3b0f70",
-                0.68,
-                "#000004"
-              ]
-        },
-        'layout': {
-            'visibility': 'none',
-        },
-        placeholder
-    })
-    // cell_exp
-    map.addLayer({
-        id:'cell_exp_results_1',
-        type:'fill',
-        source:{
-            'type':'vector',
-            'url':'mapbox://iamwfx.results1_0'
-        },
-        'source-layer': 'data',
-        'paint': {
-            'fill-color': [
-                "step",
-                ["get", "cell_exp"],
-                "#fcfdbf",
-                0.15,
-                "#fe9f6d",
-                0.28,
-                "#de4968",
-                0.41,
-                "#8c2981",
-                0.55,
-                "#3b0f70",
-                0.68,
-                "#000004"
-              ]
-        },
-        'layout': {
-            'visibility': 'none',
-        },
-        placeholder
-    })
-    map.addLayer({
-        id:'cell_exp_results_2',
-        type:'fill',
-        source:{
-            'type':'vector',
-            'url':'mapbox://iamwfx.results1_1_n'
-        },
-        'source-layer': 'data',
-        'paint': {
-            'fill-color': [
-                "step",
-                ["get", "cell_exp"],
-                "#fcfdbf",
-                0.15,
-                "#fe9f6d",
-                0.28,
-                "#de4968",
-                0.41,
-                "#8c2981",
-                0.55,
-                "#3b0f70",
-                0.68,
-                "#000004"
-              ]
-        },
-        'layout': {
-            'visibility': 'none',
-        },
-        placeholder
-    })
-    map.addLayer({
-        id:'cell_exp_results_3',
-        type:'fill',
-        source:{
-            'type':'vector',
-            'url':'mapbox://iamwfx.results1_2'
-        },
-        'source-layer': 'data',
-        'paint': {
-            'fill-color': [
-                "step",
-                ["get", "cell_exp"],
-                "#fcfdbf",
-                0.15,
-                "#fe9f6d",
-                0.28,
-                "#de4968",
-                0.41,
-                "#8c2981",
-                0.55,
-                "#3b0f70",
-                0.68,
-                "#000004"
-              ]
-        },
-        'layout': {
-            'visibility': 'none',
-        },
-        placeholder
-    })
-    // weighted_interaction_exposure
-    map.addLayer({
-        id:'wei_results_1',
-        type:'fill',
-        source:{
-            'type':'vector',
-            'url':'mapbox://iamwfx.results1_0'
-        },
-        'source-layer': 'data',
-        'paint': {
-            'fill-color': [
-                "step",
-                [
-                  "get",
-                  "weighted_interaction_exposure"
-                ],
-                "#fcfdbf",
-                0.13,
-                "#fe9f6d",
-                0.27,
-                "#de4968",
-                0.4,
-                "#8c2981",
-                0.53,
-                "#3b0f70",
-                0.66,
-                "#000004"
-              ]
-        },
-        'layout': {
-            'visibility': 'none',
-        },
-        placeholder
-    })
-    map.addLayer({
-        id:'wei_results_2',
-        type:'fill',
-        source:{
-            'type':'vector',
-            'url':'mapbox://iamwfx.results1_1_n'
-        },
-        'source-layer': 'data',
-        'paint': {
-            'fill-color': [
-                "step",
-                [
-                  "get",
-                  "weighted_interaction_exposure"
-                ],
-                "#fcfdbf",
-                0.13,
-                "#fe9f6d",
-                0.27,
-                "#de4968",
-                0.4,
-                "#8c2981",
-                0.53,
-                "#3b0f70",
-                0.66,
-                "#000004"
-              ]
-        },
-        'layout': {
-            'visibility': 'none',
-        },
-        placeholder
-    })
-    map.addLayer({
-        id:'wei_results_3',
-        type:'fill',
-        source:{
-            'type':'vector',
-            'url':'mapbox://iamwfx.results1_2'
-        },
-        'source-layer': 'data',
-        'paint': {
-            'fill-color': [
-                "step",
-                [
-                  "get",
-                  "weighted_interaction_exposure"
-                ],
-                "#fcfdbf",
-                0.13,
-                "#fe9f6d",
-                0.27,
-                "#de4968",
-                0.4,
-                "#8c2981",
-                0.53,
-                "#3b0f70",
-                0.66,
-                "#000004"
-              ]
-        },
-        'layout': {
-            'visibility': 'none',
-        },
-        placeholder
-    })
-
-    // // Land Use
-    // map.addLayer({
-    //     id:'landuse_0',
-    //     type:'fill',
-    //     source:{
-    //         'type':'vector',
-    //         'url':'mapbox://iamwfx.landuse_0'
-    //     },
-    //     'source-layer': 'data',
-    // })
-
-    // map.addLayer({
-    //     id:'landuse_1',
-    //     type:'fill',
-    //     source:{
-    //         'type':'vector',
-    //         'url':'mapbox://iamwfx.landuse_1'
-    //     },
-    //     'source-layer': 'data',
-    // })
-
-    // map.addLayer({
-    //     id:'landuse_2',
-    //     type:'fill',
-    //     source:{
-    //         'type':'vector',
-    //         'url':'mapbox://iamwfx.landuse_2'
-    //     },
-    //     'source-layer': 'data',
-    // })
-
-    // map.addLayer({
-    //     id:'landuse_3',
-    //     type:'fill',
-    //     source:{
-    //         'type':'vector',
-    //         'url':'mapbox://iamwfx.landuse_3'
-    //     },
-    //     'source-layer': 'data',
-    // })
-
-    // // map.addLayer({
-    // //     id:'landuse_4',
-    // //     type:'fill',
-    // //     source:{
-    // //         'type':'vector',
-    // //         'url':'mapbox://iamwfx.landuse_4'
-    // //     },
-    // //     'source-layer': 'data',
-    // // })
-
-    // map.addLayer({
-    //     id:'landuse_5',
-    //     type:'fill',
-    //     source:{
-    //         'type':'vector',
-    //         'url':'mapbox://iamwfx.landuse_5'
-    //     },
-    //     'source-layer': 'data',
-    // })
-
-    // map.addLayer({
-    //     id:'landuse_6',
-    //     type:'fill',
-    //     source:{
-    //         'type':'vector',
-    //         'url':'mapbox://iamwfx.landuse_6'
-    //     },
-    //     'source-layer': 'data',
-    // })
-
-    // map.addLayer({
-    //     id:'landuse_7',
-    //     type:'fill',
-    //     source:{
-    //         'type':'vector',
-    //         'url':'mapbox://iamwfx.landuse_7'
-    //     },
-    //     'source-layer': 'data',
-    // })
-
-    // map.addLayer({
-    //     id:'landuse_8',
-    //     type:'fill',
-    //     source:{
-    //         'type':'vector',
-    //         'url':'mapbox://iamwfx.landuse_8'
-    //     },
-    //     'source-layer': 'data',
-    // })
-
-    // map.addLayer({
-    //     id:'landuse_9',
-    //     type:'fill',
-    //     source:{
-    //         'type':'vector',
-    //         'url':'mapbox://iamwfx.landuse_9'
-    //     },
-    //     'source-layer': 'data',
-    // })
-
-    // map.addLayer({
-    //     id:'landuse_10',
-    //     type:'fill',
-    //     source:{
-    //         'type':'vector',
-    //         'url':'mapbox://iamwfx.landuse_10'
-    //     },
-    //     'source-layer': 'data',
-    // })
-
-    // map.addLayer({
-    //     id:'landuse_11',
-    //     type:'fill',
-    //     source:{
-    //         'type':'vector',
-    //         'url':'mapbox://iamwfx.landuse_11'
-    //     },
-    //     'source-layer': 'data',
-    // })
-
-    // map.addLayer({
-    //     id:'landuse_12',
-    //     type:'fill',
-    //     source:{
-    //         'type':'vector',
-    //         'url':'mapbox://iamwfx.landuse_12'
-    //     },
-    //     'source-layer': 'data',
-    // })
-
-    // map.addLayer({
-    //     id:'landuse_13',
-    //     type:'fill',
-    //     source:{
-    //         'type':'vector',
-    //         'url':'mapbox://iamwfx.landuse_13'
-    //     },
-    //     'source-layer': 'data',
-    // })
-
-    // map.addLayer({
-    //     id:'landuse_14',
-    //     type:'fill',
-    //     source:{
-    //         'type':'vector',
-    //         'url':'mapbox://iamwfx.landuse_14'
-    //     },
-    //     'source-layer': 'data',
-    // })
-
-    // map.addLayer({
-    //     id:'landuse_15',
-    //     type:'fill',
-    //     source:{
-    //         'type':'vector',
-    //         'url':'mapbox://iamwfx.landuse_15'
-    //     },
-    //     'source-layer': 'data',
-    // })
+    return true;
 }
 
 // Wait until the map has finished loading.
@@ -547,17 +101,10 @@ map.on('load', () => {
 
 // After the last frame rendered before the map enters an "idle" state.
 map.on('idle', () => {
-    // If these layers were not added to the map, abort
-    if (!map.getLayer('ce_data') || !map.getLayer('wei_data') || !map.getLayer('bge_data')) {
-        return;
-    }
-
     // Enumerate ids of the layers.
     const blk_group = ['blkgrp_exp_results_1','blkgrp_exp_results_2','blkgrp_exp_results_3'];
     const wei_group = ['wei_results_1', 'wei_results_2', 'wei_results_3'];
     const ce_group = ['cell_exp_results_1','cell_exp_results_2','cell_exp_results_3'];
-    // const non_disappearing = ['comm_area'];
-
     const results_layers = [].concat(blk_group, wei_group, ce_group);
 
     const toggleableLayerIds = ['wei_data', 'ce_data', 'bge_data', 'comm_area'];
@@ -576,6 +123,11 @@ map.on('idle', () => {
         'bge_data': blk_group,
     };
 
+    // If these layers were not added to the map, abort
+    if (!layers_exist(blk_group) || !layers_exist(wei_group) || !layers_exist(ce_group)) {
+        return;
+    }
+
     // Set up the corresponding toggle button for each layer.
     for (const id of toggleableLayerIds) {
         // Skip layers that already have a button set up.
@@ -593,18 +145,7 @@ map.on('idle', () => {
             e.preventDefault();
             e.stopPropagation();
 
-            let visibility = 'none';
-            if (disappearing_layers.includes(clickedLayer)) {
-                visibility = map.getLayoutProperty(
-                    layer_mapping[clickedLayer][0],
-                    'visibility'
-                );
-            } else {
-                visibility = map.getLayoutProperty(
-                    clickedLayer,
-                    'visibility'
-                );
-            }
+            let visibility = get_vis(clickedLayer, disappearing_layers);
             
             if (visibility === 'visible') {
                 // if already visible, turn visibility off
@@ -621,9 +162,8 @@ map.on('idle', () => {
             } else {
                 // change visible layer
                 // toggle_vis(clickedLayer, disappearing_layers);
+                
                 this.className = 'active';
-                console.log(this);
-
                 if (disappearing_layers.includes(clickedLayer)) {
 
                     for (let i = 0; i < layer_mapping[clickedLayer].length; i++) {
