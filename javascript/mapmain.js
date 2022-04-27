@@ -45,7 +45,7 @@ function toggle_vis(clickedLayer, layers) {
     );
 
     for (const layer of layers) {
-        if (layer != clickedLayer) { 
+        if (layer != clickedLayer) {
             const element = document.getElementById(layer);
             element.className = '';
             map.setLayoutProperty(
@@ -621,8 +621,8 @@ map.on('idle', () => {
             } else {
                 // change visible layer
                 // toggle_vis(clickedLayer, disappearing_layers);
-                                    this.className = 'active';
-                    console.log(this);
+                this.className = 'active';
+                console.log(this);
 
                 if (disappearing_layers.includes(clickedLayer)) {
 

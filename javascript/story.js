@@ -10,8 +10,10 @@ var stories = [
 
     // layers: ['wei_data', 'ce_data', 'bge_data', 'comm_area', 'landuse', 'gentrification'];
 
-    { title: "Story 1",
-      description: "Text.",
+    { title: "A New Picture of Segregation",
+      description: "How do we understand racial segregation? Traditionally, we think about racial segregation in terms of neighborhoods - where people live.\
+      A New Picture of Segregation describes a different way of thinking about segregation.\
+      We account for the other spaces and opportunities that make up our daily social exposures.",
     //   layer: "wei_data",
     //   flyTo: {
     //     zoom: 0,
