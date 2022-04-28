@@ -135,6 +135,8 @@ margin-right: 5px;
 #info {
     /* position: absolute; */
     opacity: 0.95;
+    top: 10%;
+    left: 45%;
     /* top: 60px; */
     /* right: 30px; */
     /* height: 510px; */
