@@ -87,8 +87,8 @@ function layers_exist(layer_list) {
 
 // Wait until the map has finished loading.
 map.on('load', () => {
-
     load_layers();
+    
     
     // Load layers of data
     map.setLayoutProperty('bge_data', 'visibility', 'none');
@@ -122,98 +122,130 @@ map.on('idle', () => {
         'ce_data': ce_group,
         'bge_data': blk_group,
     };
-
-    // If these layers were not added to the map, abort
-    if (!layers_exist(blk_group) || !layers_exist(wei_group) || !layers_exist(ce_group)) {
-        return;
-    }
-
-    // Set up the corresponding toggle button for each layer.
-    for (const id of toggleableLayerIds) {
-        // Skip layers that already have a button set up.
-
-        if (document.getElementById(id)) {
-            continue;
-        }
-
-        link = layer_toggle(id);
-
-        // Show or hide layer when the toggle is clicked.
-        link.onclick = function (e) {
-            const clickedLayer = this.textContent;
-            const layer_group = layer_mapping[clickedLayer];
-            e.preventDefault();
-            e.stopPropagation();
-
-            let visibility = get_vis(clickedLayer, disappearing_layers);
-            
-            if (visibility === 'visible') {
-                // if already visible, turn visibility off
-                this.className = '';
-
-                if (disappearing_layers.includes(clickedLayer)) {
-                    for (let i = 0; i < layer_mapping[clickedLayer].length; i++) {
-                        map.setLayoutProperty(layer_mapping[clickedLayer][i], 'visibility', 'none');
-                    }
-                } else {
-                    map.setLayoutProperty(clickedLayer, 'visibility', 'none');
-                }
-
-            } else {
-                // change visible layer
-                // toggle_vis(clickedLayer, disappearing_layers);
-                
-                this.className = 'active';
-                if (disappearing_layers.includes(clickedLayer)) {
-
-                    for (let i = 0; i < layer_mapping[clickedLayer].length; i++) {
-                        map.setLayoutProperty(
-                            layer_mapping[clickedLayer][i],
-                            'visibility',
-                            'visible'
-                        );
-                    }
-                } else {
-                    this.className = 'active';
-
-                    map.setLayoutProperty(
-                        clickedLayer,
-                        'visibility',
-                        'visible'
-                    );
-                }
-            
-                element = document.getElementById(clickedLayer);
-                element.className = '';
-
-                if (disappearing_layers.includes(clickedLayer)) {
-                    for (let i = 0; i < results_layers.length; i++) {
-                        console.log(results_layers[i]);
-                        if (!layer_mapping[clickedLayer].includes(results_layers[i])) {
-                            map.setLayoutProperty(
-                                results_layers[i],
-                                'visibility',
-                                'none'
-                            )
-                        }
-                    }
-                } else {
-                    for (let i = 0; i < disappearing_layers.length; i++) {
-                        console.log(disappearing_layers[i]);
-                        if (disappearing_layers[i] != clickedLayer) { 
-                            map.setLayoutProperty(
-                                disappearing_layers[i],
-                                'visibility',
-                                'none'
-                            )
-                        }
-                    }
-                }
-
-            
-                // adjust cursor boundaries
-                // adjust_active_layer(clickedLayer, property_types);
+    
+    // // If these layers were not added to the map, abort
+    // if (!layers_exist(blk_group) || !layers_exist(wei_group) || !layers_exist(ce_group)) {
+    //     return;
+    // }
+    $(document).ready(function(){
+        $('input[type="radio"]').click(function(){
+            if($(this).prop("checked")){
+                console.log("Checkbox is unchecked.");
+                $(this).prop("checked", false);
             }
-        };
-    }
+            else {
+                console.log("Checkbox is checked.");
+                $(this).prop("checked", true);
+            }
+        });
+    });
+
+    // $('ui.inverted.radio.checkbox').checkbox({
+    //     onChecked: function() {
+    //         console.log("checked called");
+    //     },
+    //     onUnchecked: function() {
+    //         console.log("unchecked called");
+    //     }
+    // });
+
+    // $(document).ready(function(){
+    //     $("input[type = 'radio']").click(function(){
+    //         onChecked: function() {
+    //             console.log("checked called");
+    //         },
+    //         onUnchecked: function() {
+    //             console.log("unchecked called");
+    //         }
+    //     });
+    // })
+
+    // // Set up the corresponding toggle button for each layer.
+    // for (const id of toggleableLayerIds) {
+    //     // Skip layers that already have a button set up.
+
+    //     if (document.getElementById(id)) {
+    //         continue;
+    //     }
+
+    //     link = layer_toggle(id);
+
+    //     // Show or hide layer when the toggle is clicked.
+    //     link.onclick = function (e) {
+    //         const clickedLayer = this.textContent;
+    //         const layer_group = layer_mapping[clickedLayer];
+    //         e.preventDefault();
+    //         e.stopPropagation();
+
+    //         let visibility = get_vis(clickedLayer, disappearing_layers);
+            
+    //         if (visibility === 'visible') {
+    //             // if already visible, turn visibility off
+    //             this.className = '';
+
+    //             if (disappearing_layers.includes(clickedLayer)) {
+    //                 for (let i = 0; i < layer_mapping[clickedLayer].length; i++) {
+    //                     map.setLayoutProperty(layer_mapping[clickedLayer][i], 'visibility', 'none');
+    //                 }
+    //             } else {
+    //                 map.setLayoutProperty(clickedLayer, 'visibility', 'none');
+    //             }
+
+    //         } else {
+    //             // change visible layer
+    //             // toggle_vis(clickedLayer, disappearing_layers);
+                
+    //             this.className = 'active';
+    //             if (disappearing_layers.includes(clickedLayer)) {
+
+    //                 for (let i = 0; i < layer_mapping[clickedLayer].length; i++) {
+    //                     map.setLayoutProperty(
+    //                         layer_mapping[clickedLayer][i],
+    //                         'visibility',
+    //                         'visible'
+    //                     );
+    //                 }
+    //             } else {
+    //                 this.className = 'active';
+
+    //                 map.setLayoutProperty(
+    //                     clickedLayer,
+    //                     'visibility',
+    //                     'visible'
+    //                 );
+    //             }
+            
+    //             element = document.getElementById(clickedLayer);
+    //             element.className = '';
+
+    //             if (disappearing_layers.includes(clickedLayer)) {
+    //                 for (let i = 0; i < results_layers.length; i++) {
+    //                     // console.log(results_layers[i]);
+    //                     if (!layer_mapping[clickedLayer].includes(results_layers[i])) {
+    //                         map.setLayoutProperty(
+    //                             results_layers[i],
+    //                             'visibility',
+    //                             'none'
+    //                         )
+    //                     }
+    //                 }
+    //             } else {
+    //                 for (let i = 0; i < disappearing_layers.length; i++) {
+    //                     // console.log(disappearing_layers[i]);
+    //                     if (disappearing_layers[i] != clickedLayer) { 
+    //                         map.setLayoutProperty(
+    //                             disappearing_layers[i],
+    //                             'visibility',
+    //                             'none'
+    //                         )
+    //                     }
+    //                 }
+    //             }
+
+            
+    //             // adjust cursor boundaries
+    //             // adjust_active_layer(clickedLayer, property_types);
+    //         }
+    //     };
+    // }
 });
