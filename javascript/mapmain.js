@@ -76,13 +76,53 @@ function toggle_vis(clickedLayer, layers) {
 
 // Checks to see if the layers in the array were properly loaded on the map
 function layers_exist(layer_list) {
-    for (layer in layer_list) {
-        if (!map.getLayer(layer)) {
+    for (i = 0; i < layer_list.length; i++) {
+        if (!map.getLayer(layer_list[i])) {
+            console.log(layer);
             return false;
         }
     }
 
     return true;
+}
+
+// given a group, makes that group visible and the others invisible
+function make_visible(group, result_layers) {
+
+    let to_remove = []
+
+    for (let i = 0; i < group.length; i++) {
+        map.setLayoutProperty(
+            group[i],
+            'visibility',
+            'visible'
+        );
+        console.log(group[i]);
+        let layer = group[i];
+
+        to_remove.push(layer);
+    }
+
+    for(layer in to_remove) {
+        const index = result_layers.indexOf(layer);
+
+        if (index >= 0) {
+            result_layers.splice(index, 1);
+        };
+    }
+
+    make_invisible(result_layers);
+}
+
+// given a group, makes that group invisible
+function make_invisible(group) {
+    for (let i = 0; i < group.length; i++) {
+        map.setLayoutProperty(
+            group[i],
+            'visibility',
+            'none'
+        );
+    }
 }
 
 // Wait until the map has finished loading.
@@ -118,47 +158,32 @@ map.on('idle', () => {
     };
 
     const layer_mapping = {
-        'wei_data': wei_group,
-        'ce_data': ce_group,
-        'bge_data': blk_group,
+        'wei_group': wei_group,
+        'ce_group': ce_group,
+        'blk_group': blk_group,
     };
     
-    // // If these layers were not added to the map, abort
-    // if (!layers_exist(blk_group) || !layers_exist(wei_group) || !layers_exist(ce_group)) {
-    //     return;
-    // }
+    // If these layers were not added to the map, abort
+    if (!layers_exist(blk_group) || !layers_exist(wei_group) || !layers_exist(ce_group)) {
+        console.log("aborting");
+        return;
+    }
+
     $(document).ready(function(){
         $('input[type="radio"]').click(function(){
-            if($(this).prop("checked")){
-                console.log("Checkbox is unchecked.");
-                $(this).prop("checked", false);
+            if($(this).is(":checked")){
+                console.log("unchecking");
+                let name = this.getAttribute("id");
+                console.log(name);
+                let group = layer_mapping[name];
+                make_visible(group);
             }
-            else {
-                console.log("Checkbox is checked.");
-                $(this).prop("checked", true);
+            else if($(this).is(":not(:checked)")){
+                console.log("checking");
+                let name = this.getAttribute("id");
             }
         });
     });
-
-    // $('ui.inverted.radio.checkbox').checkbox({
-    //     onChecked: function() {
-    //         console.log("checked called");
-    //     },
-    //     onUnchecked: function() {
-    //         console.log("unchecked called");
-    //     }
-    // });
-
-    // $(document).ready(function(){
-    //     $("input[type = 'radio']").click(function(){
-    //         onChecked: function() {
-    //             console.log("checked called");
-    //         },
-    //         onUnchecked: function() {
-    //             console.log("unchecked called");
-    //         }
-    //     });
-    // })
 
     // // Set up the corresponding toggle button for each layer.
     // for (const id of toggleableLayerIds) {
