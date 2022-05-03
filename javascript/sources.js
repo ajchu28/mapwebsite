@@ -1,5 +1,5 @@
 // Adding Sources
-function load_layers() {
+function load_layers(firstSymbolId) {
     // Results
     // blkgrp_exp
     map.addLayer({
@@ -28,9 +28,9 @@ function load_layers() {
               ]
         },
         'layout': {
-            'visibility': 'none',
+            'visibility': 'visible',
         }
-    })
+    },firstSymbolId)
     map.addLayer({
         id:'blkgrp_exp_results_2',
         type:'fill',
@@ -57,9 +57,9 @@ function load_layers() {
               ]
         },
         'layout': {
-            'visibility': 'none',
+            'visibility': 'visible',
         }
-    })
+    },firstSymbolId)
     map.addLayer({
         id:'blkgrp_exp_results_3',
         type:'fill',
@@ -86,9 +86,9 @@ function load_layers() {
               ]
         },
         'layout': {
-            'visibility': 'none',
+            'visibility': 'visible',
         }
-    })
+    },firstSymbolId)
     // cell_exp
     map.addLayer({
         id:'cell_exp_results_1',
@@ -118,7 +118,7 @@ function load_layers() {
         'layout': {
             'visibility': 'none',
         }
-    })
+    },firstSymbolId)
     map.addLayer({
         id:'cell_exp_results_2',
         type:'fill',
@@ -147,7 +147,7 @@ function load_layers() {
         'layout': {
             'visibility': 'none',
         }
-    })
+    },firstSymbolId)
     map.addLayer({
         id:'cell_exp_results_3',
         type:'fill',
@@ -176,7 +176,7 @@ function load_layers() {
         'layout': {
             'visibility': 'none',
         }
-    })
+    },firstSymbolId)
     // weighted_interaction_exposure
     map.addLayer({
         id:'wei_results_1',
@@ -209,7 +209,7 @@ function load_layers() {
         'layout': {
             'visibility': 'none',
         }
-    })
+    },firstSymbolId)
     map.addLayer({
         id:'wei_results_2',
         type:'fill',
@@ -241,7 +241,7 @@ function load_layers() {
         'layout': {
             'visibility': 'none',
         }
-    })
+    },firstSymbolId)
     map.addLayer({
         id:'wei_results_3',
         type:'fill',
@@ -273,7 +273,7 @@ function load_layers() {
         'layout': {
             'visibility': 'none',
         }
-    })
+    },firstSymbolId)
 
     // // Land Use
     // map.addLayer({
