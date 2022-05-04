@@ -7,21 +7,6 @@ const map = new mapboxgl.Map({
     center: [-87.623177, 41.881832]
 });
 
-// Creates links for the toggle menu
-function layer_toggle(id) {
-    // Create a link.
-    const link = document.createElement('a');
-    link.id = id;
-    link.href = '#';
-    link.textContent = id;
-    link.className = '';
-
-    const layers = document.getElementById('menu');
-    layers.appendChild(link);
-
-    return link;
-}
-
 // Adjusts the borders of the active layer when it is clicked
 function adjust_active_layer(clickedLayer, property_types) {
 
@@ -33,45 +18,6 @@ function adjust_active_layer(clickedLayer, property_types) {
         ? `<p><strong><em>${boundaries[0].properties[property_types[clickedLayer]]}</strong> units</em></p>`
         : `<p>Hover over an area!</p>`;
         });
-}
-
-// get the visibility of the given layer
-function get_vis(clickedLayer, disappearing_layers) {
-    if (disappearing_layers.includes(clickedLayer)) {
-        visibility = map.getLayoutProperty(
-            layer_mapping[clickedLayer][0],
-            'visibility'
-        );
-    } else {
-        visibility = map.getLayoutProperty(
-            clickedLayer,
-            'visibility'
-        );
-    }
-
-    return visibility;
-}
-
-// Adjusts visibility of layers when a link is clicked
-function toggle_vis(clickedLayer, layers) {
-
-    map.setLayoutProperty(
-        clickedLayer,
-        'visibility',
-        'visible'
-    );
-
-    for (const layer of layers) {
-        if (layer != clickedLayer) {
-            const element = document.getElementById(layer);
-            element.className = '';
-            map.setLayoutProperty(
-                layer,
-                'visibility',
-                'none'
-            )
-        }
-    }
 }
 
 // Checks to see if the layers in the array were properly loaded on the map
@@ -111,6 +57,10 @@ function make_visible(group, result_layers) {
             'visibility',
             'visible'
         );
+        map.moveLayer(
+            layer,
+            'placeholder'
+        );
     }
 }
 
@@ -146,9 +96,7 @@ map.on('idle', () => {
     const wei_group = ['wei_results_1', 'wei_results_2', 'wei_results_3'];
     const ce_group = ['cell_exp_results_1','cell_exp_results_2','cell_exp_results_3'];
     const results_layers = [].concat(blk_group, wei_group, ce_group);
-
-    const toggleableLayerIds = ['wei_data', 'ce_data', 'bge_data', 'comm_area'];
-    const disappearing_layers = ['wei_data', 'ce_data', 'bge_data'];
+    const land_use = ['landuse_1', 'landuse_2', 'landuse_3', 'landuse_5', 'landuse_6', 'landuse_7', 'landuse_8', 'landuse_9', 'landuse_10', 'landuse_11', 'landuse_12', 'landuse_13', 'landuse_14', 'landuse_15']
 
     const property_types = {
         'wei_data': 'weighted_interaction_exposure',
@@ -161,6 +109,7 @@ map.on('idle', () => {
         'wei_group': wei_group,
         'ce_group': ce_group,
         'blk_group': blk_group,
+        'landuse': land_use,
     };
     
     // If these layers were not added to the map, abort
@@ -179,90 +128,18 @@ map.on('idle', () => {
                 make_visible(group, results_layers);
             }
         });
+        $('input[type="checkbox"]').click(function(){
+            let name = this.getAttribute("id");
+            let group = layer_mapping[name];
+            let none = []
+
+            if($(this).is(":checked")){
+                make_visible(group, none);
+            } else if($(this).is(":not(:checked)")){
+                make_invisible(group);
+            }
+        });
     });
-
-    // // Set up the corresponding toggle button for each layer.
-    // for (const id of toggleableLayerIds) {
-    //     // Skip layers that already have a button set up.
-
-    //     if (document.getElementById(id)) {
-    //         continue;
-    //     }
-
-    //     link = layer_toggle(id);
-
-    //     // Show or hide layer when the toggle is clicked.
-    //     link.onclick = function (e) {
-    //         const clickedLayer = this.textContent;
-    //         const layer_group = layer_mapping[clickedLayer];
-    //         e.preventDefault();
-    //         e.stopPropagation();
-
-    //         let visibility = get_vis(clickedLayer, disappearing_layers);
-            
-    //         if (visibility === 'visible') {
-    //             // if already visible, turn visibility off
-    //             this.className = '';
-
-    //             if (disappearing_layers.includes(clickedLayer)) {
-    //                 for (let i = 0; i < layer_mapping[clickedLayer].length; i++) {
-    //                     map.setLayoutProperty(layer_mapping[clickedLayer][i], 'visibility', 'none');
-    //                 }
-    //             } else {
-    //                 map.setLayoutProperty(clickedLayer, 'visibility', 'none');
-    //             }
-
-    //         } else {
-    //             // change visible layer
-    //             // toggle_vis(clickedLayer, disappearing_layers);
-                
-    //             this.className = 'active';
-    //             if (disappearing_layers.includes(clickedLayer)) {
-
-    //                 for (let i = 0; i < layer_mapping[clickedLayer].length; i++) {
-    //                     map.setLayoutProperty(
-    //                         layer_mapping[clickedLayer][i],
-    //                         'visibility',
-    //                         'visible'
-    //                     );
-    //                 }
-    //             } else {
-    //                 this.className = 'active';
-
-    //                 map.setLayoutProperty(
-    //                     clickedLayer,
-    //                     'visibility',
-    //                     'visible'
-    //                 );
-    //             }
-            
-    //             element = document.getElementById(clickedLayer);
-    //             element.className = '';
-
-    //             if (disappearing_layers.includes(clickedLayer)) {
-    //                 for (let i = 0; i < results_layers.length; i++) {
-    //                     // console.log(results_layers[i]);
-    //                     if (!layer_mapping[clickedLayer].includes(results_layers[i])) {
-    //                         map.setLayoutProperty(
-    //                             results_layers[i],
-    //                             'visibility',
-    //                             'none'
-    //                         )
-    //                     }
-    //                 }
-    //             } else {
-    //                 for (let i = 0; i < disappearing_layers.length; i++) {
-    //                     // console.log(disappearing_layers[i]);
-    //                     if (disappearing_layers[i] != clickedLayer) { 
-    //                         map.setLayoutProperty(
-    //                             disappearing_layers[i],
-    //                             'visibility',
-    //                             'none'
-    //                         )
-    //                     }
-    //                 }
-    //             }
-
             
     //             // adjust cursor boundaries
     //             // adjust_active_layer(clickedLayer, property_types);
