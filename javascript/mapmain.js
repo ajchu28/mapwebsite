@@ -97,6 +97,7 @@ map.on('idle', () => {
     const ce_group = ['cell_exp_results_1','cell_exp_results_2','cell_exp_results_3'];
     const results_layers = [].concat(blk_group, wei_group, ce_group);
     const land_use = ['landuse_1', 'landuse_2', 'landuse_3', 'landuse_5', 'landuse_6', 'landuse_7', 'landuse_8', 'landuse_9', 'landuse_10', 'landuse_11', 'landuse_12', 'landuse_13', 'landuse_14', 'landuse_15']
+    const gentrification = ['gentrification_0', 'gentrification_1', 'gentrification_2']
 
     const property_types = {
         'wei_data': 'weighted_interaction_exposure',
@@ -110,6 +111,7 @@ map.on('idle', () => {
         'ce_group': ce_group,
         'blk_group': blk_group,
         'landuse': land_use,
+        'gentrification': gentrification
     };
     
     // If these layers were not added to the map, abort
@@ -134,9 +136,25 @@ map.on('idle', () => {
             let none = []
 
             if($(this).is(":checked")){
-                make_visible(group, none);
+                if(name == "commdist") {
+                    map.setLayoutProperty(
+                        'comm_area',
+                        'visibility',
+                        'visible'
+                    );
+                } else {
+                    make_visible(group, none);
+                }
             } else if($(this).is(":not(:checked)")){
-                make_invisible(group);
+                if(name == "commdist") {
+                    map.setLayoutProperty(
+                        'comm_area',
+                        'visibility',
+                        'none'
+                    );
+                } else {
+                    make_invisible(group);
+                }
             }
         });
     });

@@ -12,6 +12,20 @@ const zone_10 = '#6a3d9a'
 const zone_11 = '#ffff99'
 const zone_12 = '#b15928'
 
+// Constants for gentrification
+const gent_1 = '#4575b4'
+const gent_2 = '#74add1'
+const gent_3 = '#abd9e9'
+const gent_4 = '#e0f3f8'
+const gent_5 = '#fee090'
+const gent_6 = '#fdae61'
+const gent_7 = '#f46d43'
+const gent_8 = '#d73027'
+const gent_9 = '#a50026'
+const gent_10 = '#D3D3D3'
+
+
+
 
 
 // Adding Sources
@@ -966,4 +980,129 @@ function load_layers() {
             'visibility': 'none',
         }
     })
+
+    // Gentrification
+    map.addLayer({
+        id:'gentrification_0',
+        type:'fill',
+        source:{
+            'type':'vector',
+            'url':'mapbox://iamwfx.chicago_gentrification_0'
+        },
+        'source-layer': 'data',
+        'paint': {
+            'fill-color': [
+                "match",
+                ["get", "Typology"],
+                "Low-Income/Susceptible to Displacement",
+                gent_1,
+                "Ongoing Displacement",
+                gent_2,
+                "At Risk of Gentrification",
+                gent_3,
+                "Early/Ongoing Gentrification",
+                gent_4,
+                "Advanced Gentrification",
+                gent_5,
+                "Stable Modterate/Mixed Income",
+                gent_6,
+                "At Risk of Becoming Exclusive",
+                gent_7,
+                "Becoming Exclusive",
+                gent_8,
+                "Stable/Advanced Exclusive",
+                gent_9,
+                "Unavailable or Unreliable Data",
+                gent_10,
+                '#ffffff'
+              ],
+            'fill-opacity': 0.5
+        },
+        'layout': {
+            'visibility': 'none',
+        }
+    })
+
+    map.addLayer({
+        id:'gentrification_1',
+        type:'fill',
+        source:{
+            'type':'vector',
+            'url':'mapbox://iamwfx.chicago_gentrification_1'
+        },
+        'source-layer': 'data',
+        'paint': {
+            'fill-color': [
+                "match",
+                ["get", "Typology"],
+                "Low-Income/Susceptible to Displacement",
+                gent_1,
+                "Ongoing Displacement",
+                gent_2,
+                "At Risk of Gentrification",
+                gent_3,
+                "Early/Ongoing Gentrification",
+                gent_4,
+                "Advanced Gentrification",
+                gent_5,
+                "Stable Modterate/Mixed Income",
+                gent_6,
+                "At Risk of Becoming Exclusive",
+                gent_7,
+                "Becoming Exclusive",
+                gent_8,
+                "Stable/Advanced Exclusive",
+                gent_9,
+                "Unavailable or Unreliable Data",
+                gent_10,
+                '#ffffff'
+              ],
+            'fill-opacity': 0.5
+        },
+        'layout': {
+            'visibility': 'none',
+        }
+    })
+
+    map.addLayer({
+        id:'gentrification_2',
+        type:'fill',
+        source:{
+            'type':'vector',
+            'url':'mapbox://iamwfx.chicago_gentrification_2'
+        },
+        'source-layer': 'data',
+        'paint': {
+            'fill-color': [
+                "match",
+                ["get", "Typology"],
+                "Low-Income/Susceptible to Displacement",
+                gent_1,
+                "Ongoing Displacement",
+                gent_2,
+                "At Risk of Gentrification",
+                gent_3,
+                "Early/Ongoing Gentrification",
+                gent_4,
+                "Advanced Gentrification",
+                gent_5,
+                "Stable Modterate/Mixed Income",
+                gent_6,
+                "At Risk of Becoming Exclusive",
+                gent_7,
+                "Becoming Exclusive",
+                gent_8,
+                "Stable/Advanced Exclusive",
+                gent_9,
+                "Unavailable or Unreliable Data",
+                gent_10,
+                '#ffffff'
+              ],
+            'fill-opacity': 0.5
+        },
+        'layout': {
+            'visibility': 'none',
+        }
+    })
+
 }
