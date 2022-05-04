@@ -123,8 +123,6 @@ map.on('idle', () => {
     $(document).ready(function(){
         $('input[type="radio"]').click(function(){
             if($(this).is(":checked")){
-                console.log("unchecking");
-
                 let name = this.getAttribute("id");
                 let group = layer_mapping[name];
                 make_visible(group, results_layers);

@@ -335,3 +335,14 @@ i {
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome and Opera */
 }
+
+
+/* Scroll legend */
+
+.ui.modal>.content>.scroll {
+flex: 1;
+}
+.scroll.ui.segment {
+max-height: 200px;
+overflow-y: auto;
+}
