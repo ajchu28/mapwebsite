@@ -78,7 +78,6 @@ function toggle_vis(clickedLayer, layers) {
 function layers_exist(layer_list) {
     for (i = 0; i < layer_list.length; i++) {
         if (!map.getLayer(layer_list[i])) {
-            console.log(layer);
             return false;
         }
     }
@@ -89,29 +88,30 @@ function layers_exist(layer_list) {
 // given a group, makes that group visible and the others invisible
 function make_visible(group, result_layers) {
 
-    let to_remove = []
+    to_remove = []
+
+    for (let i = 0; i < result_layers.length; i++) {
+        let layer = result_layers[i];
+        let visibility = map.getLayoutProperty(
+            layer,
+            'visibility'
+        );
+
+        if(visibility != 'none') {
+            to_remove.push(layer);
+        }
+    }
+    make_invisible(to_remove);
 
     for (let i = 0; i < group.length; i++) {
+        let layer = group[i];
+
         map.setLayoutProperty(
-            group[i],
+            layer,
             'visibility',
             'visible'
         );
-        console.log(group[i]);
-        let layer = group[i];
-
-        to_remove.push(layer);
     }
-
-    for(layer in to_remove) {
-        const index = result_layers.indexOf(layer);
-
-        if (index >= 0) {
-            result_layers.splice(index, 1);
-        };
-    }
-
-    make_invisible(result_layers);
 }
 
 // given a group, makes that group invisible
@@ -173,14 +173,10 @@ map.on('idle', () => {
         $('input[type="radio"]').click(function(){
             if($(this).is(":checked")){
                 console.log("unchecking");
+
                 let name = this.getAttribute("id");
-                console.log(name);
                 let group = layer_mapping[name];
-                make_visible(group);
-            }
-            else if($(this).is(":not(:checked)")){
-                console.log("checking");
-                let name = this.getAttribute("id");
+                make_visible(group, results_layers);
             }
         });
     });
