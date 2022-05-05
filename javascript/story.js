@@ -20,17 +20,25 @@ var stories = [
         center: [-87.623177, 41.881832]
       },
     },
-    { title: "Story 2",
-      description: "South Beverly Boulevard is a dividing line between the community districts of Beverly to the west and Washington Heights to the east. Beverly is considered to  ",
+    { title: "Beverly vs. Washington Heights",
+      description: "South Beverly Boulevard is a dividing line between the community districts of Beverly to the west and Washington Heights to the east. While Beverly is considered to be one of the more racially diverse neighborhoods in the city, Washington Heights saw substantial racial turnover during the 1970s and has been a majority Black neighborhood since, with 96.1% of area's residents identifying as Black, according to the 2015-2019 American Census Survey.",
       layer: "blk_group",
       flyTo: {
         zoom: 13,
         center: [-87.662654,41.720481]
       },
     },
-    { title: "Story 3",
-      description: "Text text text.",
+    {
+      description: "However, when we look at the overall experienced racial exposure of people moving throughout these neighborhoods over time, we can see that Washington Heights is more diverse in its activity than what the residential diversity of the areas might suggest.",
       layer: "ce_group",
+      flyTo: {
+        zoom: 13,
+        center: [-87.662654,41.720481]
+      },
+    },
+    {
+      description: "And when we look at the interaction exposure, which measures the diversity of the potential interactions in the areas, it seems that, actually, both neighborhoods are equally diverse in this respect. Moreover, the higher diversity areas are along 95th street, which is a major commerical street in the area. ",
+      layer: "wei_group",
       flyTo: {
         zoom: 13,
         center: [-87.662654,41.720481]
