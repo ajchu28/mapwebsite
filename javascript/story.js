@@ -14,11 +14,11 @@ var stories = [
       description: "How do we understand racial segregation? Traditionally, we think about racial segregation in terms of neighborhoods - where people live.\
       A New Picture of Segregation describes a different way of thinking about segregation.\
       We account for the other spaces and opportunities that make up our daily social exposures.",
-    //   layer: "wei_data",
-    //   flyTo: {
-    //     zoom: 0,
-    //     center: [0, 0]
-    //   },
+      layer: "blk_group",
+      flyTo: {
+        zoom: 11,
+        center: [-87.623177, 41.881832]
+      },
     },
     { title: "Story 2",
       description: "South Beverly Boulevard is a dividing line between the community districts of Beverly to the west and Washington Heights to the east. Beverly is considered to  ",
@@ -30,7 +30,7 @@ var stories = [
     },
     { title: "Story 3",
       description: "Text text text.",
-      layer: "ce_data",
+      layer: "ce_group",
       flyTo: {
         zoom: 13,
         center: [-87.662654,41.720481]
@@ -56,7 +56,6 @@ function updateStory(storyObj) {
 
     // call to update to active layer
     make_visible(layer_mapping[layer], results_layers);
-    $("#"+layer).prop("checked", true);
     $("#"+layer).prop("checked", true);
 
 

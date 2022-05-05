@@ -55,7 +55,7 @@ function layers_exist(layer_list) {
 
 // given a group, makes that group visible and the others invisible
 function make_visible(group, result_layers) {
-    console.log(group, result_layers);
+    
     to_remove = []
 
     for (let i = 0; i < result_layers.length; i++) {
