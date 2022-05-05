@@ -1,5 +1,27 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiYWpjaHUyOCIsImEiOiJja3o2M3MzMWswd200MnZwNGdieTNlaHRjIn0.BePZiTybP8rLoo6yQKon_w';
 
+const blk_group = ['blkgrp_exp_results_1','blkgrp_exp_results_2','blkgrp_exp_results_3'];
+const wei_group = ['wei_results_1', 'wei_results_2', 'wei_results_3'];
+const ce_group = ['cell_exp_results_1','cell_exp_results_2','cell_exp_results_3'];
+const results_layers = [].concat(blk_group, wei_group, ce_group);
+const land_use = ['landuse_1', 'landuse_2', 'landuse_3', 'landuse_5', 'landuse_6', 'landuse_7', 'landuse_8', 'landuse_9', 'landuse_10', 'landuse_11', 'landuse_12', 'landuse_13', 'landuse_14', 'landuse_15']
+const gentrification = ['gentrification_0', 'gentrification_1', 'gentrification_2']
+
+const property_types = {
+    'wei_data': 'weighted_interaction_exposure',
+    'ce_data': 'cell_exp',
+    'bge_data': 'blkgrp_exp',
+    'comm_area': 'id',
+};
+
+const layer_mapping = {
+    'wei_group': wei_group,
+    'ce_group': ce_group,
+    'blk_group': blk_group,
+    'landuse': land_use,
+    'gentrification': gentrification
+};
+
 const map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/ajchu28/cl02pt6kd000714l36asbutmv',
@@ -33,7 +55,7 @@ function layers_exist(layer_list) {
 
 // given a group, makes that group visible and the others invisible
 function make_visible(group, result_layers) {
-
+    console.log(group, result_layers);
     to_remove = []
 
     for (let i = 0; i < result_layers.length; i++) {
@@ -78,8 +100,8 @@ function make_invisible(group) {
 // Wait until the map has finished loading.
 map.on('load', () => {
     load_layers();
-    
-    
+
+
     // Load layers of data
     map.setLayoutProperty('bge_data', 'visibility', 'none');
     map.setLayoutProperty('ce_data', 'visibility', 'none');
@@ -92,28 +114,8 @@ map.on('load', () => {
 // After the last frame rendered before the map enters an "idle" state.
 map.on('idle', () => {
     // Enumerate ids of the layers.
-    const blk_group = ['blkgrp_exp_results_1','blkgrp_exp_results_2','blkgrp_exp_results_3'];
-    const wei_group = ['wei_results_1', 'wei_results_2', 'wei_results_3'];
-    const ce_group = ['cell_exp_results_1','cell_exp_results_2','cell_exp_results_3'];
-    const results_layers = [].concat(blk_group, wei_group, ce_group);
-    const land_use = ['landuse_1', 'landuse_2', 'landuse_3', 'landuse_5', 'landuse_6', 'landuse_7', 'landuse_8', 'landuse_9', 'landuse_10', 'landuse_11', 'landuse_12', 'landuse_13', 'landuse_14', 'landuse_15']
-    const gentrification = ['gentrification_0', 'gentrification_1', 'gentrification_2']
 
-    const property_types = {
-        'wei_data': 'weighted_interaction_exposure',
-        'ce_data': 'cell_exp',
-        'bge_data': 'blkgrp_exp',
-        'comm_area': 'id',
-    };
 
-    const layer_mapping = {
-        'wei_group': wei_group,
-        'ce_group': ce_group,
-        'blk_group': blk_group,
-        'landuse': land_use,
-        'gentrification': gentrification
-    };
-    
     // If these layers were not added to the map, abort
     if (!layers_exist(blk_group) || !layers_exist(wei_group) || !layers_exist(ce_group)) {
         console.log("aborting");
@@ -156,7 +158,7 @@ map.on('idle', () => {
             }
         });
     });
-            
+
     //             // adjust cursor boundaries
     //             // adjust_active_layer(clickedLayer, property_types);
     //         }
