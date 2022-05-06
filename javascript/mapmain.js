@@ -2,7 +2,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiYWpjaHUyOCIsImEiOiJja3o2M3MzMWswd200MnZwNGdie
 
 const map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/ajchu28/cl02pt6kd000714l36asbutmv',
+    style: 'mapbox://styles/ajchu28/cl2rubekr000214pswya10cpr',
     zoom: 11,
     center: [-87.623177, 41.881832]
 });
@@ -75,9 +75,25 @@ function make_invisible(group) {
     }
 }
 
+// // Changes fill type to lines
+// function change_to_lines(layers) {
+//     for (layer in layers) {
+//         map.setPaintProperty(
+//             layer,
+//             'line',
+
+//         )
+//     }
+// }
+
 // Wait until the map has finished loading.
 map.on('load', () => {
     load_layers();
+
+    const blk_group = ['blkgrp_exp_results_1','blkgrp_exp_results_2','blkgrp_exp_results_3'];
+    array = []
+
+    make_visible(blk_group, array)
     
     
     // Load layers of data
@@ -121,6 +137,12 @@ map.on('idle', () => {
     }
 
     $(document).ready(function(){
+        $('.ui.accordion').accordion()
+  
+        $('.toggle').click(function(){
+            $('.ui.accordion').accordion('toggle', 0);
+        });
+
         $('input[type="radio"]').click(function(){
             if($(this).is(":checked")){
                 let name = this.getAttribute("id");

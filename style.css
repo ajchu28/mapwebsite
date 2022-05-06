@@ -134,19 +134,12 @@ margin-right: 5px;
 
 #info {
     /* position: absolute; */
-    opacity: 0.95;
+    opacity: 1;
     top: 10%;
     left: 45%;
     /* top: 60px; */
     /* right: 30px; */
     /* height: 510px; */
-}
-
-#story {
-    /* position: absolute; */
-    opacity: 0.9;
-    /* top: 60px; */
-    /* left: 30px; */
 }
 
 #spacer {
@@ -309,7 +302,7 @@ visibility: hidden;
 }
 
 i {
-    border: solid white;
+    border: solid black;
     border-width: 0 3px 3px 0;
     display: inline-block;
     padding: 3px;
@@ -345,4 +338,8 @@ flex: 1;
 .scroll.ui.segment {
 max-height: 200px;
 overflow-y: auto;
+}
+
+#story_box {
+    opacity: 0.9;
 }

@@ -1,3 +1,16 @@
+// zoomed in line
+// zoomed out fill with 1 opacity
+// Legend accordion
+// add in hover box
+// add in legend
+// slider for hover
+
+// Land Use Opacity
+const lu_opacity = 1
+
+// Gentrification Opacity
+const g_opacity = 1
+
 // Constants for zone colors
 const zone_1 = '#a6cee3'
 const zone_2 = '#1f78b4'
@@ -11,6 +24,7 @@ const zone_9 = '#cab2d6'
 const zone_10 = '#6a3d9a'
 const zone_11 = '#ffff99'
 const zone_12 = '#b15928'
+const lu_13 = '#D3D3D3'
 
 // Constants for gentrification
 const gent_1 = '#4575b4'
@@ -23,6 +37,7 @@ const gent_7 = '#f46d43'
 const gent_8 = '#d73027'
 const gent_9 = '#a50026'
 const gent_10 = '#D3D3D3'
+const g_11 = gent_10
 
 
 
@@ -342,9 +357,9 @@ function load_layers() {
                 zone_11,
                 [12],
                 zone_12,
-                '#ffffff'
+                lu_13
               ],
-            'fill-opacity': 0.5
+            'fill-opacity': lu_opacity
         },
         'layout': {
             'visibility': 'none',
@@ -387,9 +402,9 @@ function load_layers() {
                 zone_11,
                 [12],
                 zone_12,
-                '#ffffff'
+                lu_13
               ],
-            'fill-opacity': 0.5
+            'fill-opacity': lu_opacity
         },
         'layout': {
             'visibility': 'none',
@@ -432,9 +447,9 @@ function load_layers() {
                 zone_11,
                 [12],
                 zone_12,
-                '#ffffff'
+                lu_13
               ],
-            'fill-opacity': 0.5
+            'fill-opacity': lu_opacity
         },
         'layout': {
             'visibility': 'none',
@@ -477,9 +492,9 @@ function load_layers() {
                 zone_11,
                 [12],
                 zone_12,
-                '#ffffff'
+                lu_13
               ],
-            'fill-opacity': 0.5
+            'fill-opacity': lu_opacity
         },
         'layout': {
             'visibility': 'none',
@@ -522,9 +537,9 @@ function load_layers() {
                 zone_11,
                 [12],
                 zone_12,
-                '#ffffff'
+                lu_13
               ],
-            'fill-opacity': 0.5
+            'fill-opacity': lu_opacity
         },
         'layout': {
             'visibility': 'none',
@@ -567,9 +582,9 @@ function load_layers() {
                 zone_11,
                 [12],
                 zone_12,
-                '#ffffff'
+                lu_13
               ],
-            'fill-opacity': 0.5
+            'fill-opacity': lu_opacity
         },
         'layout': {
             'visibility': 'none',
@@ -612,9 +627,9 @@ function load_layers() {
                 zone_11,
                 [12],
                 zone_12,
-                '#ffffff'
+                lu_13
               ],
-            'fill-opacity': 0.5
+            'fill-opacity': lu_opacity
         },
         'layout': {
             'visibility': 'none',
@@ -657,9 +672,9 @@ function load_layers() {
                 zone_11,
                 [12],
                 zone_12,
-                '#ffffff'
+                lu_13
               ],
-            'fill-opacity': 0.5
+            'fill-opacity': lu_opacity
         },
         'layout': {
             'visibility': 'none',
@@ -702,9 +717,9 @@ function load_layers() {
                 zone_11,
                 [12],
                 zone_12,
-                '#ffffff'
+                lu_13
               ],
-            'fill-opacity': 0.5
+            'fill-opacity': lu_opacity
         },
         'layout': {
             'visibility': 'none',
@@ -747,9 +762,9 @@ function load_layers() {
                 zone_11,
                 [12],
                 zone_12,
-                '#ffffff'
+                lu_13
               ],
-            'fill-opacity': 0.5
+            'fill-opacity': lu_opacity
         },
         'layout': {
             'visibility': 'none',
@@ -792,9 +807,9 @@ function load_layers() {
                 zone_11,
                 [12],
                 zone_12,
-                '#ffffff'
+                lu_13
               ],
-            'fill-opacity': 0.5
+            'fill-opacity': lu_opacity
         },
         'layout': {
             'visibility': 'none',
@@ -837,9 +852,9 @@ function load_layers() {
                 zone_11,
                 [12],
                 zone_12,
-                '#ffffff'
+                lu_13
               ],
-            'fill-opacity': 0.5
+            'fill-opacity': lu_opacity
         },
         'layout': {
             'visibility': 'none',
@@ -882,9 +897,9 @@ function load_layers() {
                 zone_11,
                 [12],
                 zone_12,
-                '#ffffff'
+                lu_13
               ],
-            'fill-opacity': 0.5
+            'fill-opacity': lu_opacity
         },
         'layout': {
             'visibility': 'none',
@@ -927,9 +942,9 @@ function load_layers() {
                 zone_11,
                 [12],
                 zone_12,
-                '#ffffff'
+                lu_13
               ],
-            'fill-opacity': 0.5
+            'fill-opacity': lu_opacity
         },
         'layout': {
             'visibility': 'none',
@@ -972,9 +987,9 @@ function load_layers() {
                 zone_11,
                 [12],
                 zone_12,
-                '#ffffff'
+                lu_13
               ],
-            'fill-opacity': 0.5
+            'fill-opacity': lu_opacity
         },
         'layout': {
             'visibility': 'none',
@@ -1014,9 +1029,9 @@ function load_layers() {
                 gent_9,
                 "Unavailable or Unreliable Data",
                 gent_10,
-                '#ffffff'
+                g_11
               ],
-            'fill-opacity': 0.5
+            'fill-opacity': g_opacity
         },
         'layout': {
             'visibility': 'none',
@@ -1055,9 +1070,9 @@ function load_layers() {
                 gent_9,
                 "Unavailable or Unreliable Data",
                 gent_10,
-                '#ffffff'
+                g_11
               ],
-            'fill-opacity': 0.5
+            'fill-opacity': g_opacity
         },
         'layout': {
             'visibility': 'none',
@@ -1096,9 +1111,9 @@ function load_layers() {
                 gent_9,
                 "Unavailable or Unreliable Data",
                 gent_10,
-                '#ffffff'
+                g_11
               ],
-            'fill-opacity': 0.5
+            'fill-opacity': g_opacity
         },
         'layout': {
             'visibility': 'none',
