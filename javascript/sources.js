@@ -1,8 +1,6 @@
 // zoomed in line
 // zoomed out fill with 1 opacity
-// Legend accordion
 // add in hover box
-// add in legend
 // slider for hover
 
 // Land Use Opacity

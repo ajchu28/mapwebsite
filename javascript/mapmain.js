@@ -7,14 +7,18 @@ const map = new mapboxgl.Map({
     center: [-87.623177, 41.881832]
 });
 
+var active_layer = "blk_group";
+
 // Adjusts the borders of the active layer when it is clicked
 function adjust_active_layer(clickedLayer, property_types) {
+
+    console.log(clickedLayer);
 
     map.on('mousemove', (event) => {
         const boundaries = map.queryRenderedFeatures(event.point, {
         layers: [clickedLayer]
         });
-        document.getElementById('pd').innerHTML = boundaries.length
+        document.getElementById('hover').innerHTML = boundaries.length
         ? `<p><strong><em>${boundaries[0].properties[property_types[clickedLayer]]}</strong> units</em></p>`
         : `<p>Hover over an area!</p>`;
         });
@@ -75,17 +79,6 @@ function make_invisible(group) {
     }
 }
 
-// // Changes fill type to lines
-// function change_to_lines(layers) {
-//     for (layer in layers) {
-//         map.setPaintProperty(
-//             layer,
-//             'line',
-
-//         )
-//     }
-// }
-
 // Wait until the map has finished loading.
 map.on('load', () => {
     load_layers();
@@ -129,12 +122,14 @@ map.on('idle', () => {
         'landuse': land_use,
         'gentrification': gentrification
     };
-    
+
     // If these layers were not added to the map, abort
     if (!layers_exist(blk_group) || !layers_exist(wei_group) || !layers_exist(ce_group)) {
         console.log("aborting");
         return;
     }
+
+
 
     $(document).ready(function(){
         $('.ui.accordion').accordion()
@@ -147,7 +142,10 @@ map.on('idle', () => {
             if($(this).is(":checked")){
                 let name = this.getAttribute("id");
                 let group = layer_mapping[name];
+                console.log("assigning in radio buttons")
+                active_layer = name;
                 make_visible(group, results_layers);
+                // adjust_active_layer(this, property_types);
             }
         });
         $('input[type="checkbox"]').click(function(){
@@ -178,10 +176,64 @@ map.on('idle', () => {
             }
         });
     });
-            
-    //             // adjust cursor boundaries
-    //             // adjust_active_layer(clickedLayer, property_types);
-    //         }
-    //     };
-    // }
+
+    map.on('mousemove', (event) => {
+        if (active_layer == 'blk_group') {
+            active_layer = 'bge_data'
+        } else if (active_layer == 'wei_group') {
+            active_layer = 'wei_data'
+        } else if (active_layer == 'ce_group') {
+            active_layer = 'ce_data'
+        }
+
+        const boundaries = map.queryRenderedFeatures(event.point, {
+        layers: layer_mapping[active_layer]
+        });
+
+        console.log("active layer " + active_layer);
+        value = boundaries[0].properties[property_types[active_layer]]
+
+        if (value == undefined) {
+            value = "No Data"
+        } else {
+            value = Math.floor(value * 100);
+            value = String(value).concat("%"); 
+        }
+
+        if (active_layer == 'bge_data') {
+
+            if (value == "No Data") {
+                document.getElementById('hover').innerHTML = boundaries.length
+                ? `<p>No Data</p>`
+                : `<p>Hover over an area!</p>`;
+            } else {
+                document.getElementById('hover').innerHTML = boundaries.length
+                ? `<p>There's a <strong><em>${value}</strong></em> chance that two people living in this tract are different races</p>`
+                : `<p>Hover over an area!</p>`;
+            }
+        } else if (active_layer == 'wei_data') {
+
+            if (value == "No Data") {
+                document.getElementById('hover').innerHTML = boundaries.length
+                ? `<p>No Data</p>`
+                : `<p>Hover over an area!</p>`;
+            } else {
+                document.getElementById('hover').innerHTML = boundaries.length
+                ? `<p>There's a <strong><em>${value}</strong></em> chance that two people who have potentially interacted in this tract are different races</em></p>`
+                : `<p>Hover over an area!</p>`;    
+            }
+        } else if (active_layer == 'ce_data') {
+
+            if (value == "No Data") {
+                document.getElementById('hover').innerHTML = boundaries.length
+                ? `<p>No Data</p>`
+                : `<p>Hover over an area!</p>`;
+            } else {
+                document.getElementById('hover').innerHTML = boundaries.length
+                ? `<p>There's a <strong><em>${value}</strong></em> chance that two people who have visited this tract are different races</p>`
+                : `<p>Hover over an area!</p>`;
+            }
+        }
+    });
+    
 });
