@@ -1,8 +1,3 @@
-// zoomed in line
-// zoomed out fill with 1 opacity
-// add in hover box
-// slider for hover
-
 // Land Use Opacity
 const lu_opacity = 1
 
@@ -36,10 +31,6 @@ const gent_8 = '#d73027'
 const gent_9 = '#a50026'
 const gent_10 = '#D3D3D3'
 const g_11 = gent_10
-
-
-
-
 
 // Adding Sources
 function load_layers() {

@@ -8,8 +8,6 @@ var storyContent = d3.select("#story-text");
 
 var stories = [
 
-    // layers: ['wei_data', 'ce_data', 'bge_data', 'comm_area', 'landuse', 'gentrification'];
-
     { title: "A New Picture of Segregation",
       description: "How do we understand racial segregation? Traditionally, we think about racial segregation in terms of neighborhoods - where people live.\
       A New Picture of Segregation describes a different way of thinking about segregation.\
