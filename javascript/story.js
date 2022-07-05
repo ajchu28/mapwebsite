@@ -27,6 +27,7 @@ var stories = [
       },
     },
     {
+      title: "Beverly vs. Washington Heights",
       description: "However, when we look at the overall experienced racial exposure of people moving throughout these neighborhoods over time, we can see that Washington Heights is more diverse in its activity than what the residential diversity of the areas might suggest.",
       layer: "ce_group",
       flyTo: {
@@ -35,6 +36,7 @@ var stories = [
       },
     },
     {
+      title: "Beverly vs. Washington Heights",
       description: "And when we look at the interaction exposure, which measures the diversity of the potential interactions in the areas, it seems that, actually, both neighborhoods are equally diverse in this respect. Moreover, the higher diversity areas are along 95th street, which is a major commerical street in the area. ",
       layer: "wei_group",
       flyTo: {
