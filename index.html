@@ -3,7 +3,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Map</title>
+        <title>Visualizing Segregation</title>
         <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
 
         <!-- Custom Styling -->
@@ -32,6 +32,7 @@
     </head>
 
     <body>
+
 
         <!-- Navigation Menu -->
         <div class ="ui inverted menu" id="navmenu">
@@ -171,6 +172,31 @@
         <script src="javascript/webmain.js" defer></script>
 
         <!-- Story -->
-        <script src="javascript/story.js"></script>
+        <script >
+            // definition
+              function loadScript(scriptUrl) {
+                const script = document.createElement('script');
+                script.src = scriptUrl;
+                document.body.appendChild(script);
+    
+                return new Promise((res, rej) => {
+                  script.onload = function() {
+                    res();
+                  }
+                  script.onerror = function () {
+                    rej();
+                  }
+                });
+              }
+    
+              // use
+              loadScript("javascript/story.js")
+                .then(() => {
+                  console.log('Script loaded!');
+                })
+                .catch(() => {
+                  console.error('Script loading failed! Handle this error');
+                });
+            </script>
     </footer>
 </html>
